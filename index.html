@@ -6,13 +6,14 @@
 <title>CELAVI — Luxury Café & Bistro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Added Noto Sans/Serif Armenian for beautiful, native Armenian typography -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&family=Noto+Sans+Armenian:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ---------- RESET & BASE ---------- */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
     background: #0e0e0e;
     color: #f5f1ea;
     overflow-x: hidden;
@@ -52,7 +53,7 @@
     border-bottom: 1px solid rgba(201, 169, 97, 0.2);
   }
   .logo {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 6px;
@@ -64,6 +65,7 @@
     display: flex;
     gap: 2.5rem;
     list-style: none;
+    align-items: center;
   }
   .nav-links a {
     color: var(--cream);
@@ -85,6 +87,23 @@
   }
   .nav-links a:hover { color: var(--gold); }
   .nav-links a:hover::after { width: 100%; }
+
+  .lang-toggle {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.4rem 1rem;
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+  .lang-toggle:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
 
   .menu-toggle {
     display: none;
@@ -120,7 +139,7 @@
     animation: fadeUp 1.5s ease;
   }
   .hero-subtitle {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
     font-size: 0.9rem;
     letter-spacing: 8px;
     color: var(--gold);
@@ -128,7 +147,7 @@
     margin-bottom: 1.5rem;
   }
   .hero-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
     font-size: clamp(3rem, 9vw, 7rem);
     font-weight: 700;
     letter-spacing: 12px;
@@ -139,7 +158,7 @@
     -webkit-text-fill-color: transparent;
   }
   .hero-tagline {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant Garamond', 'Noto Serif Armenian', serif;
     font-size: 1.5rem;
     font-style: italic;
     color: var(--cream);
@@ -222,7 +241,7 @@
     margin-bottom: 1rem;
   }
   .section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 600;
     color: var(--cream);
@@ -239,7 +258,7 @@
     margin: 0 auto;
     color: var(--muted);
     font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant Garamond', 'Noto Serif Armenian', serif;
     font-size: 1.2rem;
   }
 
@@ -262,7 +281,7 @@
     font-size: 0.8rem;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
   }
   .category-btn:hover,
   .category-btn.active {
@@ -316,7 +335,7 @@
     gap: 1rem;
   }
   .item-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
     font-size: 1.3rem;
     color: var(--cream);
     font-weight: 500;
@@ -336,7 +355,7 @@
     color: var(--muted);
     font-size: 0.9rem;
     font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant Garamond', 'Noto Serif Armenian', serif;
     font-size: 1.05rem;
   }
   .item-tags {
@@ -353,6 +372,7 @@
     border-radius: 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
   }
 
   /* ---------- ABOUT ---------- */
@@ -383,7 +403,7 @@
     pointer-events: none;
   }
   .about-text h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     color: var(--cream);
@@ -391,7 +411,7 @@
   .about-text p {
     color: var(--muted);
     margin-bottom: 1.2rem;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant Garamond', 'Noto Serif Armenian', serif;
     font-size: 1.15rem;
     line-height: 1.8;
   }
@@ -404,7 +424,7 @@
     border-top: 1px solid rgba(201, 169, 97, 0.2);
   }
   .stat-num {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
     font-size: 2.5rem;
     color: var(--gold);
     font-weight: 700;
@@ -414,6 +434,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--muted);
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
   }
 
   /* ---------- RESERVATION ---------- */
@@ -436,7 +457,7 @@
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(201, 169, 97, 0.3);
     color: var(--cream);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
     font-size: 0.9rem;
     transition: all 0.3s;
   }
@@ -460,6 +481,7 @@
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s;
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
   }
   .reservation-form button:hover {
     background: var(--gold-light);
@@ -474,371 +496,4 @@
     border-top: 1px solid rgba(201, 169, 97, 0.15);
   }
   .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    letter-spacing: 8px;
-    color: var(--cream);
-    margin-bottom: 1rem;
-  }
-  .footer-logo span { color: var(--gold); }
-  .footer-info {
-    color: var(--muted);
-    margin: 1rem 0;
-    font-size: 0.9rem;
-  }
-  .socials {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 2rem 0;
-  }
-  .socials a {
-    width: 45px; height: 45px;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold);
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-  .socials a:hover {
-    background: var(--gold);
-    color: var(--dark);
-    transform: translateY(-3px);
-  }
-  .copyright {
-    color: var(--muted);
-    font-size: 0.8rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(201, 169, 97, 0.1);
-    letter-spacing: 1px;
-  }
-
-  /* ---------- REVEAL ANIMATION ---------- */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 900px) {
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .about-image { height: 350px; }
-    .reservation-form { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 768px) {
-    .menu-toggle { display: block; }
-    .nav-links {
-      position: fixed;
-      top: 70px; right: -100%;
-      flex-direction: column;
-      background: rgba(14,14,14,0.98);
-      width: 70%;
-      height: calc(100vh - 70px);
-      padding: 3rem 2rem;
-      transition: right 0.4s ease;
-      gap: 2rem;
-    }
-    .nav-links.open { right: 0; }
-    section { padding: 5rem 5%; }
-    .stats { grid-template-columns: 1fr; gap: 1.5rem; }
-  }
-</style>
-</head>
-<body>
-
-<!-- NAVIGATION -->
-<nav id="navbar">
-  <a href="#" class="logo">CE<span>L</span>AVI</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#reservation">Reserve</a></li>
-  </ul>
-  <button class="menu-toggle" id="menuToggle">☰</button>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-subtitle">Est. 2020 · Luxury Café</div>
-    <h1 class="hero-title">CELAVI</h1>
-    <div class="hero-divider"></div>
-    <p class="hero-tagline">Where every cup tells a story of elegance</p>
-    <a href="#menu" class="btn">Explore the Menu</a>
-  </div>
-  <div class="scroll-indicator">SCROLL ↓</div>
-</section>
-
-<!-- MENU -->
-<section id="menu">
-  <div class="section-header reveal">
-    <div class="section-label">Our Selection</div>
-    <h2 class="section-title">The Menu</h2>
-    <div class="section-divider"></div>
-    <p class="section-desc">Curated with passion, crafted with precision — a symphony of flavors awaits.</p>
-  </div>
-
-  <div class="menu-categories reveal">
-    <button class="category-btn active" data-category="all">All</button>
-    <button class="category-btn" data-category="coffee">Coffee</button>
-    <button class="category-btn" data-category="pastry">Pastries</button>
-    <button class="category-btn" data-category="breakfast">Breakfast</button>
-    <button class="category-btn" data-category="lunch">Lunch</button>
-    <button class="category-btn" data-category="dessert">Desserts</button>
-  </div>
-
-  <div class="menu-grid" id="menuGrid">
-    <!-- Coffee -->
-    <div class="menu-item" data-cat="coffee">
-      <div class="item-header"><span class="item-name">Signature Espresso</span><span class="item-dots"></span><span class="item-price">$6.50</span></div>
-      <p class="item-desc">Single-origin Ethiopian beans, notes of dark chocolate & wild berries.</p>
-      <div class="item-tags"><span class="tag">Signature</span><span class="tag">Strong</span></div>
-    </div>
-    <div class="menu-item" data-cat="coffee">
-      <div class="item-header"><span class="item-name">Velvet Cappuccino</span><span class="item-dots"></span><span class="item-price">$7.00</span></div>
-      <p class="item-desc">Silky microfoam, double ristretto, dusted with Madagascar cocoa.</p>
-      <div class="item-tags"><span class="tag">Creamy</span></div>
-    </div>
-    <div class="menu-item" data-cat="coffee">
-      <div class="item-header"><span class="item-name">Golden Latte</span><span class="item-dots"></span><span class="item-price">$8.50</span></div>
-      <p class="item-desc">Turmeric, honey, espresso & oat milk — a luxurious morning ritual.</p>
-      <div class="item-tags"><span class="tag">Wellness</span><span class="tag">Vegan</span></div>
-    </div>
-    <div class="menu-item" data-cat="coffee">
-      <div class="item-header"><span class="item-name">Cold Brew Royale</span><span class="item-dots"></span><span class="item-price">$9.00</span></div>
-      <p class="item-desc">24-hour steeped, vanilla bean cream, edible gold leaf.</p>
-      <div class="item-tags"><span class="tag">Signature</span></div>
-    </div>
-
-    <!-- Pastry -->
-    <div class="menu-item" data-cat="pastry">
-      <div class="item-header"><span class="item-name">Butter Croissant</span><span class="item-dots"></span><span class="item-price">$5.50</span></div>
-      <p class="item-desc">72-hour fermented French dough, 84 layers of pure buttery bliss.</p>
-      <div class="item-tags"><span class="tag">Classic</span></div>
-    </div>
-    <div class="menu-item" data-cat="pastry">
-      <div class="item-header"><span class="item-name">Pistachio Danish</span><span class="item-dots"></span><span class="item-price">$6.80</span></div>
-      <p class="item-desc">Iranian pistachio cream, rose water glaze, toasted almonds.</p>
-      <div class="item-tags"><span class="tag">Artisan</span></div>
-    </div>
-    <div class="menu-item" data-cat="pastry">
-      <div class="item-header"><span class="item-name">Almond Financier</span><span class="item-dots"></span><span class="item-price">$5.00</span></div>
-      <p class="item-desc">Brown butter, Marcona almonds, delicate honey crumb.</p>
-      <div class="item-tags"><span class="tag">French</span></div>
-    </div>
-
-    <!-- Breakfast -->
-    <div class="menu-item" data-cat="breakfast">
-      <div class="item-header"><span class="item-name">Truffle Eggs Benedict</span><span class="item-dots"></span><span class="item-price">$18.00</span></div>
-      <p class="item-desc">Poached free-range eggs, black truffle hollandaise, brioche.</p>
-      <div class="item-tags"><span class="tag">Signature</span><span class="tag">Luxury</span></div>
-    </div>
-    <div class="menu-item" data-cat="breakfast">
-      <div class="item-header"><span class="item-name">Smoked Salmon Royale</span><span class="item-dots"></span><span class="item-price">$22.00</span></div>
-      <p class="item-desc">Norwegian salmon, crème fraîche, capers, dill, artisan bagel.</p>
-      <div class="item-tags"><span class="tag">Premium</span></div>
-    </div>
-    <div class="menu-item" data-cat="breakfast">
-      <div class="item-header"><span class="item-name">Avocado & Poached Egg</span><span class="item-dots"></span><span class="item-price">$15.00</span></div>
-      <p class="item-desc">Sourdough, smashed avocado, chili flakes, microgreens.</p>
-      <div class="item-tags"><span class="tag">Healthy</span></div>
-    </div>
-
-    <!-- Lunch -->
-    <div class="menu-item" data-cat="lunch">
-      <div class="item-header"><span class="item-name">Wagyu Burger</span><span class="item-dots"></span><span class="item-price">$28.00</span></div>
-      <p class="item-desc">A5 Wagyu patty, aged cheddar, caramelized onion, truffle aioli.</p>
-      <div class="item-tags"><span class="tag">Signature</span><span class="tag">Premium</span></div>
-    </div>
-    <div class="menu-item" data-cat="lunch">
-      <div class="item-header"><span class="item-name">Lobster Bisque</span><span class="item-dots"></span><span class="item-price">$19.00</span></div>
-      <p class="item-desc">Maine lobster, cognac cream, chive oil, gruyère crouton.</p>
-      <div class="item-tags"><span class="tag">Chef's Choice</span></div>
-    </div>
-    <div class="menu-item" data-cat="lunch">
-      <div class="item-header"><span class="item-name">Mediterranean Bowl</span><span class="item-dots"></span><span class="item-price">$17.00</span></div>
-      <p class="item-desc">Quinoa, grilled halloumi, pomegranate, za'atar vinaigrette.</p>
-      <div class="item-tags"><span class="tag">Vegetarian</span></div>
-    </div>
-
-    <!-- Dessert -->
-    <div class="menu-item" data-cat="dessert">
-      <div class="item-header"><span class="item-name">Valrhona Chocolate Soufflé</span><span class="item-dots"></span><span class="item-price">$14.00</span></div>
-      <p class="item-desc">70% dark chocolate, vanilla bean crème anglaise. 15 min.</p>
-      <div class="item-tags"><span class="tag">Signature</span></div>
-    </div>
-    <div class="menu-item" data-cat="dessert">
-      <div class="item-header"><span class="item-name">Crème Brûlée</span><span class="item-dots"></span><span class="item-price">$11.00</span></div>
-      <p class="item-desc">Tahitian vanilla, caramelized sugar crust, fresh berries.</p>
-      <div class="item-tags"><span class="tag">Classic</span></div>
-    </div>
-    <div class="menu-item" data-cat="dessert">
-      <div class="item-header"><span class="item-name">Pistachio Mille-Feuille</span><span class="item-dots"></span><span class="item-price">$13.00</span></div>
-      <p class="item-desc">Crisp puff pastry, pistachio diplomat cream, raspberry coulis.</p>
-      <div class="item-tags"><span class="tag">Artisan</span></div>
-    </div>
-    <div class="menu-item" data-cat="dessert">
-      <div class="item-header"><span class="item-name">Tiramisu Classico</span><span class="item-dots"></span><span class="item-price">$12.00</span></div>
-      <p class="item-desc">Mascarpone, espresso-soaked savoiardi, cocoa dust.</p>
-      <div class="item-tags"><span class="tag">Italian</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-image reveal"></div>
-    <div class="about-text reveal">
-      <div class="section-label">Our Story</div>
-      <h3>A Legacy of <span style="color:var(--gold);font-style:italic;">Refinement</span></h3>
-      <p>Born from a passion for the finer things, CELAVI is more than a café — it is a sanctuary where time slows, conversations deepen, and every detail is considered.</p>
-      <p>Our master artisans source the rarest beans, the freshest ingredients, and the finest craftsmanship to deliver an experience that transcends the ordinary.</p>
-      <div class="stats">
-        <div><div class="stat-num" data-target="15">0</div><div class="stat-label">Years of Craft</div></div>
-        <div><div class="stat-num" data-target="42">0</div><div class="stat-label">Signature Dishes</div></div>
-        <div><div class="stat-num" data-target="98">0</div><div class="stat-label">Happy Guests %</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESERVATION -->
-<section id="reservation">
-  <div class="section-header reveal">
-    <div class="section-label">Join Us</div>
-    <h2 class="section-title">Reserve Your Table</h2>
-    <div class="section-divider"></div>
-    <p class="section-desc">Experience the art of fine dining. Reserve your moment with us.</p>
-  </div>
-  <form class="reservation-form reveal" onsubmit="handleReservation(event)">
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="date" required>
-    <input type="time" required>
-    <select required>
-      <option value="">Number of Guests</option>
-      <option>1 Guest</option><option>2 Guests</option>
-      <option>3 Guests</option><option>4 Guests</option>
-      <option>5+ Guests</option>
-    </select>
-    <input type="tel" placeholder="Phone Number" required>
-    <button type="submit">Confirm Reservation</button>
-  </form>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">CE<span>L</span>AVI</div>
-  <p class="footer-info">123 Elegance Avenue · Downtown District</p>
-  <p class="footer-info">Open Daily · 7:00 AM — 11:00 PM</p>
-  <p class="footer-info">+1 (555) 123-4567 · hello@celavi.com</p>
-  <div class="socials">
-    <a href="#" title="Instagram">IG</a>
-    <a href="#" title="Facebook">FB</a>
-    <a href="#" title="Twitter">TW</a>
-    <a href="#" title="Pinterest">PT</a>
-  </div>
-  <p class="copyright">© 2026 CELAVI Café · All Rights Reserved · Crafted with Elegance</p>
-</footer>
-
-<script>
-  /* ---------- NAVBAR SCROLL ---------- */
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  /* ---------- MOBILE MENU ---------- */
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  document.querySelectorAll('.nav-links a').forEach(a =>
-    a.addEventListener('click', () => navLinks.classList.remove('open'))
-  );
-
-  /* ---------- CATEGORY FILTER ---------- */
-  const categoryBtns = document.querySelectorAll('.category-btn');
-  const menuItems = document.querySelectorAll('.menu-item');
-
-  categoryBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      categoryBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cat = btn.dataset.category;
-
-      menuItems.forEach((item, i) => {
-        const show = cat === 'all' || item.dataset.cat === cat;
-        item.style.transition = 'all 0.5s ease';
-        if (show) {
-          item.style.display = '';
-          setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-          }, i * 60);
-        } else {
-          item.style.opacity = '0';
-          item.style.transform = 'translateY(20px)';
-          setTimeout(() => { item.style.display = 'none'; }, 400);
-        }
-      });
-    });
-  });
-
-  /* ---------- SCROLL REVEAL ---------- */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        if (entry.target.classList.contains('menu-item')) {
-          entry.target.classList.add('visible');
-        }
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.reveal, .menu-item').forEach(el => observer.observe(el));
-
-  /* ---------- COUNTER ANIMATION ---------- */
-  const counters = document.querySelectorAll('.stat-num');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = +el.dataset.target;
-        let current = 0;
-        const step = target / 60;
-        const update = () => {
-          current += step;
-          if (current < target) {
-            el.textContent = Math.ceil(current);
-            requestAnimationFrame(update);
-          } else {
-            el.textContent = target;
-          }
-        };
-        update();
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => counterObserver.observe(c));
-
-  /* ---------- RESERVATION ---------- */
-  function handleReservation(e) {
-    e.preventDefault();
-    alert('✨ Thank you! Your reservation request has been received. We will confirm shortly.');
-    e.target.reset();
-  }
-</script>
-</body>
-</html>
+    font-family: 'Playfair Display', 'Noto Serif Armenian
