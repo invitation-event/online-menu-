@@ -1,990 +1,674 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CELAVI — Luxury Café & Bistro</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Added Noto Sans/Serif Armenian for beautiful, native Armenian typography -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&family=Noto+Sans+Armenian:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  /* ---------- RESET & BASE ---------- */
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-    background: #0e0e0e;
-    color: #f5f1ea;
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
-  :root {
-    --gold: #c9a961;
-    --gold-light: #e6cc8a;
-    --gold-dark: #8b7355;
-    --cream: #f5f1ea;
-    --dark: #0e0e0e;
-    --dark-soft: #1a1a1a;
-    --muted: #9a928a;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solens Photo Studio - Capturing your moments with elegance and light.">
+    <title>Solens Photo Studio</title>
+    
+    <!-- Elegant Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Color Palette & Variables --- */
+        :root {
+            --color-sage: #ccd5ae;
+            --color-pale: #e9edc9;
+            --color-cream: #fefae0;
+            --color-peach: #faedcd;
+            --color-tan: #d4a373;
+            --color-text: #5c4b37; /* Darker brown derived from palette for readability */
+            --color-text-light: #8c7b66;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
 
-  /* ---------- SCROLLBAR ---------- */
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #0e0e0e; }
-  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-  /* ---------- NAVIGATION ---------- */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    padding: 1.5rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    transition: all 0.4s ease;
-    background: transparent;
-  }
-  nav.scrolled {
-    background: rgba(14, 14, 14, 0.95);
-    backdrop-filter: blur(12px);
-    padding: 1rem 5%;
-    border-bottom: 1px solid rgba(201, 169, 97, 0.2);
-  }
-  .logo {
-    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 6px;
-    color: var(--cream);
-    text-decoration: none;
-  }
-  .logo span { color: var(--gold); }
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-    align-items: center;
-  }
-  .nav-links a {
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 400;
-    position: relative;
-    transition: color 0.3s;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -6px; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.4s ease;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-links a:hover::after { width: 100%; }
+        /* --- Typography --- */
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; text-align: center; }
+        p { font-size: 1rem; color: var(--color-text-light); }
 
-  .lang-toggle {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 0.4rem 1rem;
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 2px;
-  }
-  .lang-toggle:hover {
-    background: var(--gold);
-    color: var(--dark);
-  }
+        /* --- Utilities --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-tan);
+            color: var(--color-cream);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid var(--color-tan);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: transparent;
+            color: var(--color-tan);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-tan);
+        }
+        .btn-outline:hover {
+            background-color: var(--color-tan);
+            color: var(--color-cream);
+        }
 
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--cream);
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
+        /* --- Language Switcher --- */
+        .lang-switch {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(254, 250, 224, 0.9);
+            padding: 0.4rem;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--color-pale);
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            color: var(--color-text-light);
+            transition: var(--transition);
+        }
+        .lang-btn.active {
+            background-color: var(--color-tan);
+            color: var(--color-cream);
+        }
 
-  /* ---------- HERO ---------- */
-  .hero {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    background:
-      linear-gradient(rgba(14,14,14,0.55), rgba(14,14,14,0.75)),
-      url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1920&q=80') center/cover no-repeat;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(14,14,14,0.6) 100%);
-  }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    animation: fadeUp 1.5s ease;
-  }
-  .hero-subtitle {
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 8px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
-  .hero-title {
-    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
-    font-size: clamp(3rem, 9vw, 7rem);
-    font-weight: 700;
-    letter-spacing: 12px;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--gold) 50%, var(--cream) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .hero-tagline {
-    font-family: 'Cormorant Garamond', 'Noto Serif Armenian', serif;
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--cream);
-    margin-bottom: 3rem;
-    opacity: 0.9;
-  }
-  .hero-divider {
-    width: 80px;
-    height: 1px;
-    background: var(--gold);
-    margin: 0 auto 2rem;
-    position: relative;
-  }
-  .hero-divider::before {
-    content: '✦';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--gold);
-    background: transparent;
-    padding: 0 10px;
-    font-size: 0.8rem;
-  }
-  .btn {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background: transparent;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--gold);
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
-    z-index: -1;
-  }
-  .btn:hover { color: var(--dark); }
-  .btn:hover::before { transform: translateY(0); }
+        /* Language Visibility Logic */
+        [lang="hy"] { display: none; }
+        body.lang-hy [lang="en"] { display: none !important; }
+        body.lang-hy [lang="hy"] { display: block; }
+        body.lang-hy span[lang="hy"], body.lang-hy a[lang="hy"] { display: inline; }
+        span[lang="en"], a[lang="en"] { display: inline; }
+        body.lang-hy span[lang="en"], body.lang-hy a[lang="en"] { display: none !important; }
 
-  .scroll-indicator {
-    position: absolute;
-    bottom: 2rem; left: 50%;
-    transform: translateX(-50%);
-    color: var(--gold);
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    animation: bounce 2s infinite;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, 10px); }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 999;
+            transition: var(--transition);
+        }
+        header.scrolled {
+            background: rgba(254, 250, 224, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(92, 75, 55, 0.05);
+            padding: 1rem 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            transition: var(--transition);
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-tan);
+            transition: var(--transition);
+        }
+        nav a:hover::after { width: 100%; }
 
-  /* ---------- SECTION COMMON ---------- */
-  section { padding: 7rem 5%; }
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-  .section-label {
-    font-size: 0.8rem;
-    letter-spacing: 6px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 600;
-    color: var(--cream);
-    margin-bottom: 1rem;
-  }
-  .section-divider {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 1.5rem auto;
-  }
-  .section-desc {
-    max-width: 600px;
-    margin: 0 auto;
-    color: var(--muted);
-    font-style: italic;
-    font-family: 'Cormorant Garamond', 'Noto Serif Armenian', serif;
-    font-size: 1.2rem;
-  }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
+        .hamburger span { width: 25px; height: 2px; background-color: var(--color-text); transition: var(--transition); }
 
-  /* ---------- MENU SECTION ---------- */
-  #menu { background: var(--dark-soft); }
-  .menu-categories {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 4rem;
-  }
-  .category-btn {
-    padding: 0.8rem 2rem;
-    background: transparent;
-    color: var(--cream);
-    border: 1px solid rgba(201, 169, 97, 0.3);
-    cursor: pointer;
-    letter-spacing: 2px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-  }
-  .category-btn:hover,
-  .category-btn.active {
-    background: var(--gold);
-    color: var(--dark);
-    border-color: var(--gold);
-  }
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(254, 250, 224, 0.4), rgba(254, 250, 224, 0.6)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+        .hero h1 { margin-bottom: 1.5rem; color: var(--color-text); }
+        .hero p { font-size: 1.15rem; margin-bottom: 2.5rem; color: var(--color-text); max-width: 600px; margin-left: auto; margin-right: auto; }
 
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-  .menu-item {
-    background: linear-gradient(145deg, #1e1e1e, #151515);
-    border: 1px solid rgba(201, 169, 97, 0.15);
-    padding: 2rem;
-    border-radius: 4px;
-    transition: all 0.5s ease;
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  .menu-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .menu-item::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    transition: left 0.6s ease;
-  }
-  .menu-item:hover {
-    transform: translateY(-8px);
-    border-color: var(--gold);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(201, 169, 97, 0.1);
-  }
-  .menu-item:hover::before { left: 100%; }
+        /* --- Sections General --- */
+        section { padding: 6rem 0; }
+        .section-bg { background-color: var(--color-peach); }
+        .section-alt { background-color: var(--color-pale); }
 
-  .item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.8rem;
-    gap: 1rem;
-  }
-  .item-name {
-    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
-    font-size: 1.3rem;
-    color: var(--cream);
-    font-weight: 500;
-  }
-  .item-price {
-    color: var(--gold);
-    font-weight: 600;
-    font-size: 1.1rem;
-    white-space: nowrap;
-  }
-  .item-dots {
-    flex: 1;
-    border-bottom: 1px dotted rgba(201, 169, 97, 0.3);
-    margin-bottom: 5px;
-  }
-  .item-desc {
-    color: var(--muted);
-    font-size: 0.9rem;
-    font-style: italic;
-    font-family: 'Cormorant Garamond', 'Noto Serif Armenian', serif;
-    font-size: 1.05rem;
-  }
-  .item-tags {
-    margin-top: 1rem;
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .tag {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.7rem;
-    background: rgba(201, 169, 97, 0.1);
-    color: var(--gold);
-    border-radius: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-  }
+        /* --- Portfolio --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .portfolio-item:hover img { transform: scale(1.05); }
+        .portfolio-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(92, 75, 55, 0.4);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-overlay span {
+            color: var(--color-cream);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
 
-  /* ---------- ABOUT ---------- */
-  #about {
-    background: var(--dark);
-    position: relative;
-  }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
-  }
-  .about-image {
-    position: relative;
-    height: 500px;
-    border-radius: 4px;
-    overflow: hidden;
-    background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80') center/cover;
-  }
-  .about-image::after {
-    content: '';
-    position: absolute;
-    inset: 15px;
-    border: 1px solid var(--gold);
-    pointer-events: none;
-  }
-  .about-text h3 {
-    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--cream);
-  }
-  .about-text p {
-    color: var(--muted);
-    margin-bottom: 1.2rem;
-    font-family: 'Cormorant Garamond', 'Noto Serif Armenian', serif;
-    font-size: 1.15rem;
-    line-height: 1.8;
-  }
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(201, 169, 97, 0.2);
-  }
-  .stat-num {
-    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
-    font-size: 2.5rem;
-    color: var(--gold);
-    font-weight: 700;
-  }
-  .stat-label {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-  }
+        /* --- About --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
 
-  /* ---------- RESERVATION ---------- */
-  #reservation {
-    background:
-      linear-gradient(rgba(14,14,14,0.85), rgba(14,14,14,0.9)),
-      url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1920&q=80') center/cover fixed;
-    text-align: center;
-  }
-  .reservation-form {
-    max-width: 700px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-  .reservation-form input,
-  .reservation-form select {
-    padding: 1rem 1.2rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(201, 169, 97, 0.3);
-    color: var(--cream);
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-  }
-  .reservation-form input:focus,
-  .reservation-form select:focus {
-    outline: none;
-    border-color: var(--gold);
-    background: rgba(255,255,255,0.08);
-  }
-  .reservation-form input::placeholder { color: var(--muted); }
-  .reservation-form .full { grid-column: 1 / -1; }
-  .reservation-form button {
-    grid-column: 1 / -1;
-    padding: 1.2rem;
-    background: var(--gold);
-    color: var(--dark);
-    border: none;
-    cursor: pointer;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-  }
-  .reservation-form button:hover {
-    background: var(--gold-light);
-    letter-spacing: 5px;
-  }
+        /* --- Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .service-card {
+            background: var(--color-cream);
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid var(--color-pale);
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(92, 75, 55, 0.08);
+            border-color: var(--color-tan);
+        }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-tan); }
+        .service-card .price { font-size: 1.2rem; font-weight: 500; margin: 1.5rem 0; color: var(--color-text); }
 
-  /* ---------- FOOTER ---------- */
-  footer {
-    background: #080808;
-    padding: 4rem 5% 2rem;
-    text-align: center;
-    border-top: 1px solid rgba(201, 169, 97, 0.15);
-  }
-  .footer-logo {
-    font-family: 'Playfair Display', 'Noto Serif Armenian', serif;
-    font-size: 2rem;
-    letter-spacing: 8px;
-    color: var(--cream);
-    margin-bottom: 1rem;
-  }
-  .footer-logo span { color: var(--gold); }
-  .footer-info {
-    color: var(--muted);
-    margin: 1rem 0;
-    font-size: 0.9rem;
-  }
-  .socials {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 2rem 0;
-  }
-  .socials a {
-    width: 45px; height: 45px;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold);
-    text-decoration: none;
-    transition: all 0.3s;
-    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  .socials a:hover {
-    background: var(--gold);
-    color: var(--dark);
-    transform: translateY(-3px);
-  }
-  .copyright {
-    color: var(--muted);
-    font-size: 0.8rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(201, 169, 97, 0.1);
-    letter-spacing: 1px;
-  }
+        /* --- Minimalist Booking / Sign-up --- */
+        .booking-section {
+            background-color: var(--color-sage);
+            text-align: center;
+        }
+        .booking-form {
+            max-width: 550px;
+            margin: 3rem auto 0;
+            display: grid;
+            gap: 1.5rem;
+        }
+        .form-group { text-align: left; }
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(92, 75, 55, 0.2);
+            background: rgba(254, 250, 224, 0.6);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-text);
+            transition: var(--transition);
+            outline: none;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--color-tan);
+            background: var(--color-cream);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
 
-  /* ---------- REVEAL ANIMATION ---------- */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+        /* --- Footer --- */
+        footer {
+            background-color: var(--color-text);
+            color: var(--color-cream);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .social-links a {
+            color: var(--color-cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+        .social-links a:hover { color: var(--color-tan); }
+        .copyright {
+            font-size: 0.8rem;
+            color: rgba(254, 250, 224, 0.5);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(254, 250, 224, 0.1);
+        }
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 900px) {
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .about-image { height: 350px; }
-    .reservation-form { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 768px) {
-    .menu-toggle { display: block; }
-    .nav-links {
-      position: fixed;
-      top: 70px; right: -100%;
-      flex-direction: column;
-      background: rgba(14,14,14,0.98);
-      width: 70%;
-      height: calc(100vh - 70px);
-      padding: 3rem 2rem;
-      transition: right 0.4s ease;
-      gap: 2rem;
-    }
-    .nav-links.open { right: 0; }
-    section { padding: 5rem 5%; }
-    .stats { grid-template-columns: 1fr; gap: 1.5rem; }
-  }
-</style>
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--color-cream);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 20px rgba(0,0,0,0.05);
+            }
+            nav ul.active { right: 0; }
+            .about-content { grid-template-columns: 1fr; gap: 2rem; }
+            .about-img { height: 350px; }
+            .lang-switch { top: 1.5rem; right: 4rem; }
+        }
+    </style>
 </head>
-<body>
+<body class="lang-en">
 
-<!-- NAVIGATION -->
-<nav id="navbar">
-  <a href="#" class="logo">CE<span>L</span>AVI</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#home" data-i18n="nav_home">Home</a></li>
-    <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
-    <li><a href="#about" data-i18n="nav_about">About</a></li>
-    <li><a href="#reservation" data-i18n="nav_reserve">Reserve</a></li>
-    <li><button id="langToggle" class="lang-toggle">AM</button></li>
-  </ul>
-  <button class="menu-toggle" id="menuToggle">☰</button>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-subtitle" data-i18n="hero_subtitle">Est. 2020 · Luxury Café</div>
-    <h1 class="hero-title">CELAVI</h1>
-    <div class="hero-divider"></div>
-    <p class="hero-tagline" data-i18n="hero_tagline">Where every cup tells a story of elegance</p>
-    <a href="#menu" class="btn" data-i18n="hero_btn">Explore the Menu</a>
-  </div>
-  <div class="scroll-indicator" data-i18n="scroll_indicator">SCROLL ↓</div>
-</section>
-
-<!-- MENU -->
-<section id="menu">
-  <div class="section-header reveal">
-    <div class="section-label" data-i18n="menu_label">Our Selection</div>
-    <h2 class="section-title" data-i18n="menu_title">The Menu</h2>
-    <div class="section-divider"></div>
-    <p class="section-desc" data-i18n="menu_desc">Curated with passion, crafted with precision — a symphony of flavors awaits.</p>
-  </div>
-
-  <div class="menu-categories reveal">
-    <button class="category-btn active" data-category="all" data-i18n="cat_all">All</button>
-    <button class="category-btn" data-category="coffee" data-i18n="cat_coffee">Coffee</button>
-    <button class="category-btn" data-category="pastry" data-i18n="cat_pastry">Pastries</button>
-    <button class="category-btn" data-category="breakfast" data-i18n="cat_breakfast">Breakfast</button>
-    <button class="category-btn" data-category="lunch" data-i18n="cat_lunch">Lunch</button>
-    <button class="category-btn" data-category="dessert" data-i18n="cat_dessert">Desserts</button>
-  </div>
-
-  <div class="menu-grid" id="menuGrid">
-    <!-- Coffee -->
-    <div class="menu-item" data-cat="coffee">
-      <div class="item-header"><span class="item-name" data-i18n="item_espresso_name">Signature Espresso</span><span class="item-dots"></span><span class="item-price">$6.50</span></div>
-      <p class="item-desc" data-i18n="item_espresso_desc">Single-origin Ethiopian beans, notes of dark chocolate & wild berries.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_signature">Signature</span><span class="tag" data-i18n="tag_strong">Strong</span></div>
-    </div>
-    <div class="menu-item" data-cat="coffee">
-      <div class="item-header"><span class="item-name" data-i18n="item_cappuccino_name">Velvet Cappuccino</span><span class="item-dots"></span><span class="item-price">$7.00</span></div>
-      <p class="item-desc" data-i18n="item_cappuccino_desc">Silky microfoam, double ristretto, dusted with Madagascar cocoa.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_creamy">Creamy</span></div>
-    </div>
-    <div class="menu-item" data-cat="coffee">
-      <div class="item-header"><span class="item-name" data-i18n="item_latte_name">Golden Latte</span><span class="item-dots"></span><span class="item-price">$8.50</span></div>
-      <p class="item-desc" data-i18n="item_latte_desc">Turmeric, honey, espresso & oat milk — a luxurious morning ritual.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_wellness">Wellness</span><span class="tag" data-i18n="tag_vegan">Vegan</span></div>
-    </div>
-    <div class="menu-item" data-cat="coffee">
-      <div class="item-header"><span class="item-name" data-i18n="item_coldbrew_name">Cold Brew Royale</span><span class="item-dots"></span><span class="item-price">$9.00</span></div>
-      <p class="item-desc" data-i18n="item_coldbrew_desc">24-hour steeped, vanilla bean cream, edible gold leaf.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_signature">Signature</span></div>
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English">EN</button>
+        <button class="lang-btn" onclick="setLang('hy')" aria-label="Switch to Armenian">HY</button>
     </div>
 
-    <!-- Pastry -->
-    <div class="menu-item" data-cat="pastry">
-      <div class="item-header"><span class="item-name" data-i18n="item_croissant_name">Butter Croissant</span><span class="item-dots"></span><span class="item-price">$5.50</span></div>
-      <p class="item-desc" data-i18n="item_croissant_desc">72-hour fermented French dough, 84 layers of pure buttery bliss.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_classic">Classic</span></div>
-    </div>
-    <div class="menu-item" data-cat="pastry">
-      <div class="item-header"><span class="item-name" data-i18n="item_danish_name">Pistachio Danish</span><span class="item-dots"></span><span class="item-price">$6.80</span></div>
-      <p class="item-desc" data-i18n="item_danish_desc">Iranian pistachio cream, rose water glaze, toasted almonds.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_artisan">Artisan</span></div>
-    </div>
-    <div class="menu-item" data-cat="pastry">
-      <div class="item-header"><span class="item-name" data-i18n="item_financier_name">Almond Financier</span><span class="item-dots"></span><span class="item-price">$5.00</span></div>
-      <p class="item-desc" data-i18n="item_financier_desc">Brown butter, Marcona almonds, delicate honey crumb.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_french">French</span></div>
-    </div>
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">SOLENS</a>
+            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home" onclick="toggleMenu()">
+                        <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
+                    </a></li>
+                    <li><a href="#portfolio" onclick="toggleMenu()">
+                        <span lang="en">Portfolio</span><span lang="hy">Պորտֆոլիո</span>
+                    </a></li>
+                    <li><a href="#about" onclick="toggleMenu()">
+                        <span lang="en">About</span><span lang="hy">Մեր մասին</span>
+                    </a></li>
+                    <li><a href="#services" onclick="toggleMenu()">
+                        <span lang="en">Services</span><span lang="hy">Ծառայություններ</span>
+                    </a></li>
+                    <li><a href="#booking" onclick="toggleMenu()">
+                        <span lang="en">Book Now</span><span lang="hy">Ամրագրել</span>
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Breakfast -->
-    <div class="menu-item" data-cat="breakfast">
-      <div class="item-header"><span class="item-name" data-i18n="item_benedict_name">Truffle Eggs Benedict</span><span class="item-dots"></span><span class="item-price">$18.00</span></div>
-      <p class="item-desc" data-i18n="item_benedict_desc">Poached free-range eggs, black truffle hollandaise, brioche.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_signature">Signature</span><span class="tag" data-i18n="tag_luxury">Luxury</span></div>
-    </div>
-    <div class="menu-item" data-cat="breakfast">
-      <div class="item-header"><span class="item-name" data-i18n="item_salmon_name">Smoked Salmon Royale</span><span class="item-dots"></span><span class="item-price">$22.00</span></div>
-      <p class="item-desc" data-i18n="item_salmon_desc">Norwegian salmon, crème fraîche, capers, dill, artisan bagel.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_premium">Premium</span></div>
-    </div>
-    <div class="menu-item" data-cat="breakfast">
-      <div class="item-header"><span class="item-name" data-i18n="item_avocado_name">Avocado & Poached Egg</span><span class="item-dots"></span><span class="item-price">$15.00</span></div>
-      <p class="item-desc" data-i18n="item_avocado_desc">Sourdough, smashed avocado, chili flakes, microgreens.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_healthy">Healthy</span></div>
-    </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>
+                <span lang="en">Solens Photo Studio</span>
+                <span lang="hy">Solens Ֆոտոստուդիա</span>
+            </h1>
+            <p>
+                <span lang="en">Capturing your moments with elegance, natural light, and timeless beauty.</span>
+                <span lang="hy">Ձեր պահերը գեղեցկությամբ, բնական լույսով և հավերժական գրավչությամբ հավերժացնելը։</span>
+            </p>
+            <a href="#booking" class="btn">
+                <span lang="en">Book a Session</span>
+                <span lang="hy">Ամրագրել նիստ</span>
+            </a>
+        </div>
+    </section>
 
-    <!-- Lunch -->
-    <div class="menu-item" data-cat="lunch">
-      <div class="item-header"><span class="item-name" data-i18n="item_wagyu_name">Wagyu Burger</span><span class="item-dots"></span><span class="item-price">$28.00</span></div>
-      <p class="item-desc" data-i18n="item_wagyu_desc">A5 Wagyu patty, aged cheddar, caramelized onion, truffle aioli.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_signature">Signature</span><span class="tag" data-i18n="tag_premium">Premium</span></div>
-    </div>
-    <div class="menu-item" data-cat="lunch">
-      <div class="item-header"><span class="item-name" data-i18n="item_bisque_name">Lobster Bisque</span><span class="item-dots"></span><span class="item-price">$19.00</span></div>
-      <p class="item-desc" data-i18n="item_bisque_desc">Maine lobster, cognac cream, chive oil, gruyère crouton.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_chef">Chef's Choice</span></div>
-    </div>
-    <div class="menu-item" data-cat="lunch">
-      <div class="item-header"><span class="item-name" data-i18n="item_med_name">Mediterranean Bowl</span><span class="item-dots"></span><span class="item-price">$17.00</span></div>
-      <p class="item-desc" data-i18n="item_med_desc">Quinoa, grilled halloumi, pomegranate, za'atar vinaigrette.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_vegetarian">Vegetarian</span></div>
-    </div>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-bg">
+        <div class="container">
+            <h2 class="fade-in">
+                <span lang="en">Our Work</span>
+                <span lang="hy">Մեր աշխատանքները</span>
+            </h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Portrait Photography">
+                    <div class="portfolio-overlay"><span>Portrait</span></div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding Photography">
+                    <div class="portfolio-overlay"><span>Wedding</span></div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Photography">
+                    <div class="portfolio-overlay"><span>Fashion</span></div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lifestyle Photography">
+                    <div class="portfolio-overlay"><span>Lifestyle</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Dessert -->
-    <div class="menu-item" data-cat="dessert">
-      <div class="item-header"><span class="item-name" data-i18n="item_souffle_name">Valrhona Chocolate Soufflé</span><span class="item-dots"></span><span class="item-price">$14.00</span></div>
-      <p class="item-desc" data-i18n="item_souffle_desc">70% dark chocolate, vanilla bean crème anglaise. 15 min.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_signature">Signature</span></div>
-    </div>
-    <div class="menu-item" data-cat="dessert">
-      <div class="item-header"><span class="item-name" data-i18n="item_brulee_name">Crème Brûlée</span><span class="item-dots"></span><span class="item-price">$11.00</span></div>
-      <p class="item-desc" data-i18n="item_brulee_desc">Tahitian vanilla, caramelized sugar crust, fresh berries.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_classic">Classic</span></div>
-    </div>
-    <div class="menu-item" data-cat="dessert">
-      <div class="item-header"><span class="item-name" data-i18n="item_mille_name">Pistachio Mille-Feuille</span><span class="item-dots"></span><span class="item-price">$13.00</span></div>
-      <p class="item-desc" data-i18n="item_mille_desc">Crisp puff pastry, pistachio diplomat cream, raspberry coulis.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_artisan">Artisan</span></div>
-    </div>
-    <div class="menu-item" data-cat="dessert">
-      <div class="item-header"><span class="item-name" data-i18n="item_tiramisu_name">Tiramisu Classico</span><span class="item-dots"></span><span class="item-price">$12.00</span></div>
-      <p class="item-desc" data-i18n="item_tiramisu_desc">Mascarpone, espresso-soaked savoiardi, cocoa dust.</p>
-      <div class="item-tags"><span class="tag" data-i18n="tag_italian">Italian</span></div>
-    </div>
-  </div>
-</section>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="fade-in">
+                    <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solens Studio Interior" class="about-img">
+                </div>
+                <div class="fade-in">
+                    <h2>
+                        <span lang="en">About Us</span>
+                        <span lang="hy">Մեր մասին</span>
+                    </h2>
+                    <p>
+                        <span lang="en">At Solens Photo Studio, we believe that every photograph tells a story. Founded on the principles of minimalism and natural light, we create visual narratives that are both authentic and aesthetically refined. Our studio is a sanctuary where creativity meets professionalism, ensuring your unique moments are preserved with the utmost care and artistic vision.</span>
+                        <span lang="hy">Solens Ֆոտոստուդիայում մենք հավատում ենք, որ յուրաքանչյուր լուսանկար պատմություն է պատմում: Հիմնված մինիմալիզմի և բնական լույսի սկզբունքների վրա՝ մենք ստեղծում ենք տեսողական պատմություններ, որոնք միաժամանակ և՛ ավթենտիկ են, և՛ գեղագիտորեն կատարյալ: Մեր ստուդիան մի վայր է, որտեղ ստեղծագործականությունը հանդիպում է պրոֆեսիոնալիզմին՝ ապահովելով, որ Ձեր յուրահատուկ պահերը պահպանվեն առավելագույն հոգատարությամբ և գեղարվեստական տեսլականով:</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-image reveal"></div>
-    <div class="about-text reveal">
-      <div class="section-label" data-i18n="about_label">Our Story</div>
-      <h3 data-i18n="about_title">A Legacy of <span style="color:var(--gold);font-style:italic;">Refinement</span></h3>
-      <p data-i18n="about_p1">Born from a passion for the finer things, CELAVI is more than a café — it is a sanctuary where time slows, conversations deepen, and every detail is considered.</p>
-      <p data-i18n="about_p2">Our master artisans source the rarest beans, the freshest ingredients, and the finest craftsmanship to deliver an experience that transcends the ordinary.</p>
-      <div class="stats">
-        <div><div class="stat-num" data-target="15">0</div><div class="stat-label" data-i18n="stat_years">Years of Craft</div></div>
-        <div><div class="stat-num" data-target="42">0</div><div class="stat-label" data-i18n="stat_dishes">Signature Dishes</div></div>
-        <div><div class="stat-num" data-target="98">0</div><div class="stat-label" data-i18n="stat_guests">Happy Guests %</div></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Services Section -->
+    <section id="services" class="section-alt">
+        <div class="container">
+            <h2 class="fade-in">
+                <span lang="en">Services</span>
+                <span lang="hy">Ծառայություններ</span>
+            </h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <h3>
+                        <span lang="en">Portrait Session</span>
+                        <span lang="hy">Դիմանկարային նիստ</span>
+                    </h3>
+                    <p>
+                        <span lang="en">1 hour studio session, 15 edited high-res images, private online gallery.</span>
+                        <span lang="hy">1 ժամ ստուդիական նիստ, 15 խմբագրված բարձր որակի նկար, անձնական առցանց պատկերասրահ:</span>
+                    </p>
+                    <div class="price">40,000 AMD</div>
+                    <a href="#booking" class="btn btn-outline">
+                        <span lang="en">Book Now</span>
+                        <span lang="hy">Ամրագրել</span>
+                    </a>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>
+                        <span lang="en">Wedding Story</span>
+                        <span lang="hy">Հարսանեկան պատմություն</span>
+                    </h3>
+                    <p>
+                        <span lang="en">Full day coverage, 2 photographers, 200+ edited images, premium photo album.</span>
+                        <span lang="hy">Ամբողջ օրվա լուսաբանում, 2 լուսանկարիչ, 200+ խմբագրված նկար, պրեմիում ֆոտոալբոմ:</span>
+                    </p>
+                    <div class="price">250,000 AMD</div>
+                    <a href="#booking" class="btn btn-outline">
+                        <span lang="en">Book Now</span>
+                        <span lang="hy">Ամրագրել</span>
+                    </a>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>
+                        <span lang="en">Commercial</span>
+                        <span lang="hy">Առևտրային</span>
+                    </h3>
+                    <p>
+                        <span lang="en">Product or brand photography, custom lighting setup, full commercial usage rights.</span>
+                        <span lang="hy">Ապրանքի կամ բրենդի լուսանկարչություն, հատուկ լուսավորություն, առևտրային լիարժեք իրավունքներ:</span>
+                    </p>
+                    <div class="price">From 60,000 AMD</div>
+                    <a href="#booking" class="btn btn-outline">
+                        <span lang="en">Book Now</span>
+                        <span lang="hy">Ամրագրել</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- RESERVATION -->
-<section id="reservation">
-  <div class="section-header reveal">
-    <div class="section-label" data-i18n="reserve_label">Join Us</div>
-    <h2 class="section-title" data-i18n="reserve_title">Reserve Your Table</h2>
-    <div class="section-divider"></div>
-    <p class="section-desc" data-i18n="reserve_desc">Experience the art of fine dining. Reserve your moment with us.</p>
-  </div>
-  <form class="reservation-form reveal" onsubmit="handleReservation(event)">
-    <input type="text" data-i18n-placeholder="ph_name" placeholder="Full Name" required>
-    <input type="email" data-i18n-placeholder="ph_email" placeholder="Email Address" required>
-    <input type="date" required>
-    <input type="time" required>
-    <select required>
-      <option value="" data-i18n="ph_guests">Number of Guests</option>
-      <option data-i18n="opt_1">1 Guest</option>
-      <option data-i18n="opt_2">2 Guests</option>
-      <option data-i18n="opt_3">3 Guests</option>
-      <option data-i18n="opt_4">4 Guests</option>
-      <option data-i18n="opt_5">5+ Guests</option>
-    </select>
-    <input type="tel" data-i18n-placeholder="ph_phone" placeholder="Phone Number" required>
-    <button type="submit" data-i18n="btn_confirm">Confirm Reservation</button>
-  </form>
-</section>
+    <!-- Minimalist Booking / Sign-up Section -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <h2 class="fade-in">
+                <span lang="en">Book Your Session</span>
+                <span lang="hy">Ամրագրեք Ձեր նիստը</span>
+            </h2>
+            <p class="fade-in" style="margin-bottom: 2rem; color: var(--color-text);">
+                <span lang="en">Fill out the minimalist form below and we will get back to you within 24 hours.</span>
+                <span lang="hy">Լրացրեք ստորև բերված պարզ ձևը, և մենք կկապվենք Ձեզ հետ 24 ժամվա ընթացքում:</span>
+            </p>
+            <form class="booking-form fade-in" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon. / Շնորհակալություն: Մենք շուտով կկապվենք Ձեզ հետ:');">
+                <div class="form-group">
+                    <label>
+                        <span lang="en">Full Name</span>
+                        <span lang="hy">Անուն Ազգանուն</span>
+                    </label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span lang="en">Email Address</span>
+                        <span lang="hy">Էլեկտրոնային հասցե</span>
+                    </label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span lang="en">Phone Number</span>
+                        <span lang="hy">Հեռախոսահամար</span>
+                    </label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span lang="en">Preferred Date</span>
+                        <span lang="hy">Ցանկալի ամսաթիվ</span>
+                    </label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span lang="en">Message / Service Type</span>
+                        <span lang="hy">Հաղորդագրություն / Ծառայության տեսակ</span>
+                    </label>
+                    <textarea required></textarea>
+                </div>
+                <button type="submit" class="btn" style="border: none; width: 100%; margin-top: 1rem;">
+                    <span lang="en">Send Request</span>
+                    <span lang="hy">Ուղարկել հայտ</span>
+                </button>
+            </form>
+        </div>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">CE<span>L</span>AVI</div>
-  <p class="footer-info">123 Elegance Avenue · Downtown District</p>
-  <p class="footer-info" data-i18n="footer_hours">Open Daily · 7:00 AM — 11:00 PM</p>
-  <p class="footer-info">+1 (555) 123-4567 · hello@celavi.com</p>
-  <div class="socials">
-    <a href="#" title="Instagram">IG</a>
-    <a href="#" title="Facebook">FB</a>
-    <a href="#" title="Twitter">TW</a>
-    <a href="#" title="Pinterest">PT</a>
-  </div>
-  <p class="copyright" data-i18n="footer_copy">© 2026 CELAVI Café · All Rights Reserved · Crafted with Elegance</p>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">SOLENS</div>
+            <p>
+                <span lang="en">Elegance in every frame.</span>
+                <span lang="hy">Գեղեցկություն յուրաքանչյուր կադրում:</span>
+            </p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="WhatsApp">WhatsApp</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Solens Photo Studio. 
+                <span lang="en">All rights reserved.</span>
+                <span lang="hy">Բոլոր իրավունքները պաշտպանված են:</span>
+            </div>
+        </div>
+    </footer>
 
-<script>
-  /* ---------- TRANSLATIONS DICTIONARY ---------- */
-  const translations = {
-    en: {
-      nav_home: "Home", nav_menu: "Menu", nav_about: "About", nav_reserve: "Reserve",
-      hero_subtitle: "Est. 2020 · Luxury Café", hero_tagline: "Where every cup tells a story of elegance",
-      hero_btn: "Explore the Menu", scroll_indicator: "SCROLL ↓",
-      menu_label: "Our Selection", menu_title: "The Menu",
-      menu_desc: "Curated with passion, crafted with precision — a symphony of flavors awaits.",
-      cat_all: "All", cat_coffee: "Coffee", cat_pastry: "Pastries", cat_breakfast: "Breakfast", cat_lunch: "Lunch", cat_dessert: "Desserts",
-      item_espresso_name: "Signature Espresso", item_espresso_desc: "Single-origin Ethiopian beans, notes of dark chocolate & wild berries.",
-      item_cappuccino_name: "Velvet Cappuccino", item_cappuccino_desc: "Silky microfoam, double ristretto, dusted with Madagascar cocoa.",
-      item_latte_name: "Golden Latte", item_latte_desc: "Turmeric, honey, espresso & oat milk — a luxurious morning ritual.",
-      item_coldbrew_name: "Cold Brew Royale", item_coldbrew_desc: "24-hour steeped, vanilla bean cream, edible gold leaf.",
-      item_croissant_name: "Butter Croissant", item_croissant_desc: "72-hour fermented French dough, 84 layers of pure buttery bliss.",
-      item_danish_name: "Pistachio Danish", item_danish_desc: "Iranian pistachio cream, rose water glaze, toasted almonds.",
-      item_financier_name: "Almond Financier", item_financier_desc: "Brown butter, Marcona almonds, delicate honey crumb.",
-      item_benedict_name: "Truffle Eggs Benedict", item_benedict_desc: "Poached free-range eggs, black truffle hollandaise, brioche.",
-      item_salmon_name: "Smoked Salmon Royale", item_salmon_desc: "Norwegian salmon, crème fraîche, capers, dill, artisan bagel.",
-      item_avocado_name: "Avocado & Poached Egg", item_avocado_desc: "Sourdough, smashed avocado, chili flakes, microgreens.",
-      item_wagyu_name: "Wagyu Burger", item_wagyu_desc: "A5 Wagyu patty, aged cheddar, caramelized onion, truffle aioli.",
-      item_bisque_name: "Lobster Bisque", item_bisque_desc: "Maine lobster, cognac cream, chive oil, gruyère crouton.",
-      item_med_name: "Mediterranean Bowl", item_med_desc: "Quinoa, grilled halloumi, pomegranate, za'atar vinaigrette.",
-      item_souffle_name: "Valrhona Chocolate Soufflé", item_souffle_desc: "70% dark chocolate, vanilla bean crème anglaise. 15 min.",
-      item_brulee_name: "Crème Brûlée", item_brulee_desc: "Tahitian vanilla, caramelized sugar crust, fresh berries.",
-      item_mille_name: "Pistachio Mille-Feuille", item_mille_desc: "Crisp puff pastry, pistachio diplomat cream, raspberry coulis.",
-      item_tiramisu_name: "Tiramisu Classico", item_tiramisu_desc: "Mascarpone, espresso-soaked savoiardi, cocoa dust.",
-      tag_signature: "Signature", tag_strong: "Strong", tag_creamy: "Creamy", tag_wellness: "Wellness", tag_vegan: "Vegan",
-      tag_classic: "Classic", tag_artisan: "Artisan", tag_french: "French", tag_luxury: "Luxury", tag_premium: "Premium",
-      tag_healthy: "Healthy", tag_chef: "Chef's Choice", tag_vegetarian: "Vegetarian", tag_italian: "Italian",
-      about_label: "Our Story", about_title: "A Legacy of Refinement",
-      about_p1: "Born from a passion for the finer things, CELAVI is more than a café — it is a sanctuary where time slows, conversations deepen, and every detail is considered.",
-      about_p2: "Our master artisans source the rarest beans, the freshest ingredients, and the finest craftsmanship to deliver an experience that transcends the ordinary.",
-      stat_years: "Years of Craft", stat_dishes: "Signature Dishes", stat_guests: "Happy Guests %",
-      reserve_label: "Join Us", reserve_title: "Reserve Your Table", reserve_desc: "Experience the art of fine dining. Reserve your moment with us.",
-      ph_name: "Full Name", ph_email: "Email Address", ph_guests: "Number of Guests", ph_phone: "Phone Number", btn_confirm: "Confirm Reservation",
-      opt_1: "1 Guest", opt_2: "2 Guests", opt_3: "3 Guests", opt_4: "4 Guests", opt_5: "5+ Guests",
-      footer_hours: "Open Daily · 7:00 AM — 11:00 PM", footer_copy: "© 2026 CELAVI Café · All Rights Reserved · Crafted with Elegance"
-    },
-    hy: {
-      nav_home: "Գլխավոր", nav_menu: "Մենյու", nav_about: "Մեր Մասին", nav_reserve: "Ամրագրել",
-      hero_subtitle: "Հիմնադրված 2020 · Շքեղ Սրճարան", hero_tagline: "Որտեղ յուրաքանչյուր բաժակ պատմում է նրբագեղության պատմություն",
-      hero_btn: "Դիտել Մենյուն", scroll_indicator: "ՆԵՐՔԵՎ ↓",
-      menu_label: "Մեր Ընտրանին", menu_title: "Մենյու",
-      menu_desc: "Ընտրված կրքով, պատրաստված ճշգրտությամբ — համերի սիմֆոնիան սպասում է Ձեզ։",
-      cat_all: "Բոլորը", cat_coffee: "Սուրճ", cat_pastry: "Հրուշակեղեն", cat_breakfast: "Նախաճաշ", cat_lunch: "Ճաշ", cat_dessert: "Աղանդեր",
-      item_espresso_name: "Ֆիրմային Էսպրեսո", item_espresso_desc: "Եթովպիական ընտիր հատիկներ, սև շոկոլադի և վայրի հատապտուղների նոտաներով։",
-      item_cappuccino_name: "Թավշյա Կապուչինո", item_cappuccino_desc: "Թավշյա միկրոփրփուր, կրկնակի ռիստրետո, Մադագասկարյան կակաոյի փոշի։",
-      item_latte_name: "Ոսկե Լատտե", item_latte_desc: "Քրքում, մեղր, էսպրեսո և վարսակի կաթ՝ շքեղ առավոտյան ծիսակարգ։",
-      item_coldbrew_name: "Ռոյալ Սառը Սուրճ", item_coldbrew_desc: "24-ժամյա թորում, վանիլային կրեմ, ուտելի ոսկե փայլ։",
-      item_croissant_name: "Կարագային Կրուասան", item_croissant_desc: "72-ժամյա ֆերմենտացված ֆրանսիական խմոր, 84 շերտ մաքուր կարագային բլիս։",
-      item_danish_name: "Պիստակեղեն Դանիշ", item_danish_desc: "Իրանական պիստակի կրեմ, վարդի ջրի գլազուր, բոված նուշ։",
-      item_financier_name: "Նուշե Ֆինանսիե", item_financier_desc: "Այրված կարագ, Մարկոնա նուշ, նուրբ մեղրային փշրանք։",
-      item_benedict_name: "Տրյուֆելով Ձվով Բենեդիկտ", item_benedict_desc: "Խաշած ազատ վարվող ձվեր, սև տրյուֆելի հոլանդական սոուս, բրիոշ։",
-      item_salmon_name: "Ռոյալ Ծխահամ Սաղմոն", item_salmon_desc: "Նորվեգական սաղմոն, կրեմ ֆրեշ, կապարիս, սամիթ, արհեստագործական բեյգլ։",
-      item_avocado_name: "Ավոկադո և Խաշած Ձու", item_avocado_desc: "Թթխմոր հաց, տրորած ավոկադո, չիլի պղպեղ, միկրոկանաչի։",
-      item_wagyu_name: "Վագյու Բուրգեր", item_wagyu_desc: "A5 Վագյու կոտլետ, հասունացած չեդդեր, կարամելացված սոխ, տրյուֆելի աիոլի։",
-      item_bisque_name: "Լոբստերի Բիսկ", item_bisque_desc: "Մեն նահանգի լոբստեր, կոնյակի սերուցք, սոխի յուղ, գրույեր չոր գինու հաց։",
-      item_med_name: "Միջերկրածովյան Բաժակ", item_med_desc: "Քինոա, գրիլ արած հալումի, նուռ, զաաթարի վինեգրետ։",
-      item_souffle_name: "Վալրոնա Շոկոլադե Սուֆլե", item_souffle_desc: "70% դառը շոկոլադ, վանիլային կրեմ անգլեզ։ 15 րոպե։",
-      item_brulee_name: "Կրեմ Բրյուլե", item_brulee_desc: "Տահիտյան վանիլ, կարամելացված շաքարի կեղև, թարմ հատապտուղներ։",
-      item_mille_name: "Պիստակեղեն Միլֆեյ", item_mille_desc: "Խրթխրթան խմոր, պիստակի դիպլոմատ կրեմ, ազնվամորու կուլի։",
-      item_tiramisu_name: "Տիրամիսու Կլասիկո", item_tiramisu_desc: "Մասկարպոնե, էսպրեսոյով թրջած սավոյարդի, կակաոյի փոշի։",
-      tag_signature: "Ֆիրմային", tag_strong: "Ուժեղ", tag_creamy: "Սերուցքային", tag_wellness: "Առողջարար", tag_vegan: "Վեգան",
-      tag_classic: "Դասական", tag_artisan: "Արհեստագործական", tag_french: "Ֆրանսիական", tag_luxury: "Շքեղ", tag_premium: "Պրեմիում",
-      tag_healthy: "Առողջարար", tag_chef: "Շեֆի Ընտրություն", tag_vegetarian: "Վեգետարիան", tag_italian: "Իտալական",
-      about_label: "Մեր Պատմությունը", about_title: "Նրբագեղության Ժառանգություն",
-      about_p1: "Բխելով դեպի լավագույնը կրքից, CELAVI-ն ավելին է, քան սրճարան՝ սա մի սրբավայր է, որտեղ ժամանակը դանդաղում է, զրույցները խորանում են, և յուրաքանչյուր մանրամասն ուշադրության է արժանանում։",
-      about_p2: "Մեր վարպետ արհեստավորները ձեռք են բերում ամենահազվագյուտ հատիկները, ամենաթարմ բաղադրիչները և լավագույն արհեստավարժությունը՝ սովորականից վեր խոյացող փորձառություն ապահովելու համար։",
-      stat_years: "Վարպետության Տարիներ", stat_dishes: "Ֆիրմային Ուտեստներ", stat_guests: "Գոհ Հաճախորդներ %",
-      reserve_label: "Միացեք Մեզ", reserve_title: "Ամրագրեք Ձեր Սեղանը", reserve_desc: "Զգացեք նուրբ խոհանոցի արվեստը։ Ամրագրեք Ձեր պահը մեզ հետ։",
-      ph_name: "Անուն Ազգանուն", ph_email: "Էլ. հասցե", ph_guests: "Հյուրերի Քանակ", ph_phone: "Հեռախոսահամար", btn_confirm: "Հաստատել Ամրագրումը",
-      opt_1: "1 Հյուր", opt_2: "2 Հյուր", opt_3: "3 Հյուր", opt_4: "4 Հյուր", opt_5: "5+ Հյուր",
-      footer_hours: "Բաց է Ամեն Օր · 7:00 — 23:00", footer_copy: "© 2026 CELAVI Սրճարան · Բոլոր իրավունքները պաշտպանված են · Ստեղծված նրբագեղությամբ"
-    }
-  };
-
-  /* ---------- LANGUAGE SWITCHER ---------- */
-  function setLanguage(lang) {
-    document.documentElement.lang = lang;
-    
-    // Update text content
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (translations[lang][key]) {
-        el.textContent = translations[lang][key];
-      }
-    });
-
-    // Update placeholders
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if (translations[lang][key]) {
-        el.placeholder = translations[lang][key];
-      }
-    });
-
-    // Update toggle button text to show the *other* language
-    const toggleBtn = document.getElementById('langToggle');
-    toggleBtn.textContent = lang === 'en' ? 'AM' : 'EN';
-    
-    // Save preference
-    localStorage.setItem('preferred-lang', lang);
-  }
-
-  // Initialize language
-  const savedLang = localStorage.getItem('preferred-lang') || 'en';
-  setLanguage(savedLang);
-
-  document.getElementById('langToggle').addEventListener('click', () => {
-    const currentLang = document.documentElement.lang;
-    const newLang = currentLang === 'en' ? 'hy' : 'en';
-    setLanguage(newLang);
-  });
-
-  /* ---------- NAVBAR SCROLL ---------- */
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  /* ---------- MOBILE MENU ---------- */
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  document.querySelectorAll('.nav-links a').forEach(a =>
-    a.addEventListener('click', () => navLinks.classList.remove('open'))
-  );
-
-  /* ---------- CATEGORY FILTER ---------- */
-  const categoryBtns = document.querySelectorAll('.category-btn');
-  const menuItems = document.querySelectorAll('.menu-item');
-
-  categoryBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      categoryBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cat = btn.dataset.category;
-
-      menuItems.forEach((item, i) => {
-        const show = cat === 'all' || item.dataset.cat === cat;
-        item.style.transition = 'all 0.5s ease';
-        if (show) {
-          item.style.display = '';
-          setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-          }, i * 60);
-        } else {
-          item.style.opacity = '0';
-          item.style.transform = 'translateY(20px)';
-          setTimeout(() => { item.style.display = 'none'; }, 400);
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // 1. Language Switcher Logic with LocalStorage
+        function setLang(lang) {
+            document.body.className = `lang-${lang}`;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.trim() === lang.toUpperCase()) {
+                    btn.classList.add('active');
+                }
+            });
+            localStorage.setItem('solensPreferredLang', lang);
         }
-      });
-    });
-  });
 
-  /* ---------- SCROLL REVEAL ---------- */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        if (entry.target.classList.contains('menu-item')) {
-          entry.target.classList.add('visible');
+        // Load preferred language on page load
+        const savedLang = localStorage.getItem('solensPreferredLang') || 'en';
+        setLang(savedLang);
+
+        // 2. Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.toggle('active');
         }
-      }
-    });
-  }, { threshold: 0.15 });
 
-  document.querySelectorAll('.reveal, .menu-item').forEach(el => observer.observe(el));
+        // 3. Header Background on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
-  /* ---------- COUNTER ANIMATION ---------- */
-  const counters = document.querySelectorAll('.stat-num');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = +el.dataset.target;
-        let current = 0;
-        const step = target / 60;
-        const update = () => {
-          current += step;
-          if (current < target) {
-            el.textContent = Math.ceil(current);
-            requestAnimationFrame(update);
-          } else {
-            el.textContent = target;
-          }
+        // 4. Dynamic Fade-in Animation on Scroll (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
-        update();
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => counterObserver.observe(c));
 
-  /* ---------- RESERVATION ---------- */
-  function handleReservation(e) {
-    e.preventDefault();
-    const lang = document.documentElement.lang;
-    const msg = lang === 'en' 
-      ? '✨ Thank you! Your reservation request has been received. We will confirm shortly.' 
-      : '✨ Շնորհակալություն։ Ձեր ամրագրման հայտը ստացված է։ Մենք շուտով կհաստատենք այն։';
-    alert(msg);
-    e.target.reset();
-  }
-</script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
