@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Solens Photo Studio - Where Art Meets the Lens.">
+    <meta name="theme-color" content="#ffffff">
     <title>SOLENS PHOTOSTUDIO</title>
     
     <!-- Thin, Elegant Google Fonts -->
@@ -18,7 +19,7 @@
             --text: #000000;
             --text-muted: rgba(0, 0, 0, 0.6);
             
-            /* Brand Palette (Used strictly as elegant, subtle accents) */
+            /* Brand Palette (Subtle accents) */
             --accent-sage: #ccd5ae;
             --accent-pale: #e9edc9;
             --accent-cream: #fefae0;
@@ -27,18 +28,24 @@
             
             --font-heading: 'Cormorant Garamond', serif;
             --font-body: 'Montserrat', sans-serif;
-            --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+            -webkit-touch-callout: none;
+        }
         html { scroll-behavior: smooth; }
         
         body {
             font-family: var(--font-body);
             font-weight: 300;
-            background-color: var(--bg); /* Completely white background */
-            color: var(--text); /* Black text */
-            line-height: 1.8;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
@@ -47,17 +54,17 @@
         h1, h2, h3, h4, .logo, .nav-link, .btn, .lang-btn, .footer-link {
             font-family: var(--font-heading);
             font-weight: 300;
-            text-transform: uppercase; /* Always all caps */
-            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
             color: var(--text);
         }
         
-        h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 1rem; }
-        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.5rem; text-align: center; }
-        h3 { font-size: 1.4rem; margin-bottom: 1rem; letter-spacing: 0.15em; }
-        h4 { font-size: 0.85rem; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 1rem; font-family: var(--font-body); font-weight: 400; }
+        h1 { font-size: clamp(2.2rem, 10vw, 5rem); line-height: 1.1; margin-bottom: 1rem; }
+        h2 { font-size: clamp(1.6rem, 6vw, 2.5rem); margin-bottom: 1.5rem; text-align: center; }
+        h3 { font-size: clamp(1.2rem, 5vw, 1.4rem); margin-bottom: 1rem; letter-spacing: 0.1em; }
+        h4 { font-size: 0.8rem; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 1rem; font-family: var(--font-body); font-weight: 400; }
         
-        p, span, a, label, input, textarea, button {
+        p, span, a, label, input, textarea, button, select {
             font-family: var(--font-body);
             font-weight: 300;
             color: var(--text);
@@ -67,8 +74,8 @@
             font-family: var(--font-heading);
             font-style: italic;
             font-weight: 300;
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            letter-spacing: 0.15em;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            letter-spacing: 0.1em;
             color: var(--text-muted);
         }
 
@@ -96,7 +103,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 2rem 3rem;
+            padding: 1.5rem 2rem;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
@@ -105,35 +112,39 @@
             background: transparent;
         }
         header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 1.2rem 3rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 400;
             text-decoration: none;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.25em;
+            z-index: 1002;
         }
         
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
         }
         .nav-link {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-decoration: none;
             position: relative;
             transition: var(--transition);
             font-family: var(--font-body);
             font-weight: 400;
+            padding: 0.5rem 0;
         }
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 1px;
@@ -144,72 +155,132 @@
         
         .lang-toggle {
             display: flex;
-            gap: 0.5rem;
-            border-left: 1px solid rgba(0,0,0,0.1);
+            gap: 0.8rem;
+            border-left: 1px solid rgba(0,0,0,0.15);
             padding-left: 1.5rem;
         }
         .lang-btn {
             background: none;
             border: none;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             cursor: pointer;
-            padding: 0.2rem 0.3rem;
+            padding: 0.3rem;
             color: var(--text-muted);
             transition: var(--transition);
+            min-width: 30px;
         }
         .lang-btn.active {
             color: var(--text);
             border-bottom: 1px solid var(--accent-tan);
         }
 
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
-        .hamburger span { width: 24px; height: 1px; background-color: var(--text); transition: var(--transition); }
+        .hamburger { 
+            display: none; 
+            cursor: pointer; 
+            flex-direction: column; 
+            gap: 6px; 
+            z-index: 1002;
+            padding: 0.5rem;
+            touch-action: manipulation;
+        }
+        .hamburger span { 
+            width: 24px; 
+            height: 1.5px; 
+            background-color: var(--text); 
+            transition: var(--transition); 
+        }
+
+        /* --- MOBILE MENU OVERLAY --- */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100dvh; /* Dynamic viewport height for mobile */
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-nav-link {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: var(--transition);
+            padding: 0.5rem;
+        }
+        .mobile-nav-link:active { color: var(--accent-tan); }
+        .close-menu {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text);
+            line-height: 1;
+            padding: 0.5rem;
+            touch-action: manipulation;
+        }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 100vh;
+            min-height: 100dvh; /* Prevents mobile address bar overlap */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             background-color: var(--bg);
-            /* The exact image provided, with a subtle white overlay to ensure black text readability and maintain the "white" aesthetic */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('https://cdn.shopify.com/s/files/1/0840/3871/3600/files/5849316175630765861.jpg?v=1790421159');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url('https://cdn.shopify.com/s/files/1/0840/3871/3600/files/5849316175630765861.jpg?v=1790421159');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
         }
         .hero-content {
             position: relative;
             z-index: 1;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInUp 1.2s ease forwards 0.4s;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.3s;
         }
 
         /* --- SECTIONS GENERAL --- */
-        section { padding: 8rem 0; background-color: var(--bg); }
+        section { padding: 5rem 0; background-color: var(--bg); }
         
         /* --- ABOUT US --- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            gap: 4rem;
             align-items: center;
         }
         .about-img {
             width: 100%;
-            height: 600px;
+            height: 500px;
             object-fit: cover;
             filter: grayscale(10%);
             transition: var(--transition);
         }
-        .about-img:hover { filter: grayscale(0%); }
         .about-text p {
-            font-size: 1.05rem;
-            line-height: 2;
+            font-size: 1rem;
+            line-height: 1.8;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
         }
@@ -218,7 +289,7 @@
         .rooms-container {
             display: flex;
             flex-direction: column;
-            gap: 6rem;
+            gap: 5rem;
         }
         .room-item {
             display: grid;
@@ -226,6 +297,7 @@
             gap: 4rem;
             align-items: center;
         }
+        /* Clean stacking for mobile, no direction hacks */
         .room-item.reverse { direction: rtl; }
         .room-item.reverse .room-text { direction: ltr; }
         
@@ -233,10 +305,9 @@
             width: 100%;
             aspect-ratio: 4/5;
             object-fit: cover;
-            transition: transform 1s ease;
+            transition: transform 0.8s ease;
         }
         .room-img-wrapper { overflow: hidden; }
-        .room-img-wrapper:hover .room-img { transform: scale(1.03); }
         
         .room-price {
             font-size: 0.85rem;
@@ -247,26 +318,31 @@
         }
         .room-desc {
             font-size: 0.95rem;
-            line-height: 1.9;
+            line-height: 1.8;
             color: var(--text-muted);
             margin-bottom: 2rem;
         }
 
         /* --- BUTTONS --- */
         .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
             background: transparent;
             color: var(--text);
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 400;
             letter-spacing: 0.2em;
             border: 1px solid var(--text);
             transition: var(--transition);
             cursor: pointer;
+            min-height: 48px; /* Minimum touch target */
+            touch-action: manipulation;
+            width: auto;
         }
-        .btn:hover {
+        .btn:active {
             background: var(--text);
             color: var(--bg);
         }
@@ -274,7 +350,7 @@
             border-color: var(--accent-tan);
             color: var(--accent-tan);
         }
-        .btn-accent:hover {
+        .btn-accent:active {
             background: var(--accent-tan);
             color: var(--bg);
         }
@@ -285,45 +361,53 @@
             max-width: 500px;
             margin: 3rem auto 0;
             display: grid;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .form-group { text-align: left; }
         .form-group label {
             display: block;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            margin-bottom: 0.8rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.6rem;
             font-weight: 400;
         }
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 0.8rem 0;
+            padding: 0.9rem 0;
             border: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
             background: transparent;
             font-family: var(--font-body);
-            font-size: 0.9rem;
+            font-size: 16px; /* CRITICAL: Prevents iOS auto-zoom on focus */
             font-weight: 300;
             color: var(--text);
             transition: var(--transition);
             outline: none;
             border-radius: 0;
+            min-height: 48px;
+            -webkit-appearance: none; /* Removes iOS default styling */
         }
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             border-bottom-color: var(--accent-tan);
         }
-        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-group select {
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0rem center;
+            background-size: 0.7rem;
+        }
 
         /* --- FOOTER --- */
         footer {
             background-color: var(--bg);
             color: var(--text);
-            padding: 6rem 0 3rem;
+            padding: 4rem 0 2rem;
             text-align: center;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         .footer-logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 400;
             margin-bottom: 2rem;
             letter-spacing: 0.3em;
@@ -331,7 +415,7 @@
         .footer-menu {
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 1.5rem;
             margin-bottom: 3rem;
             flex-wrap: wrap;
         }
@@ -341,8 +425,10 @@
             font-family: var(--font-body);
             font-weight: 400;
             transition: var(--transition);
+            padding: 0.5rem;
+            touch-action: manipulation;
         }
-        .footer-link:hover { color: var(--accent-tan); }
+        .footer-link:active { color: var(--accent-tan); }
         
         .contact-info {
             margin-bottom: 3rem;
@@ -369,48 +455,68 @@
         }
         .fade-in {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
+        /* =========================================
+           MOBILE OPTIMIZATIONS (Max Width 768px)
+           ========================================= */
+        @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
-            header { padding: 1.5rem; }
+            
+            /* Header adjustments */
+            header { padding: 1.2rem 1.5rem; }
+            header.scrolled { padding: 1rem 1.5rem; }
             .hamburger { display: flex; }
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: var(--bg);
+            .nav-menu { display: none; } /* Hide desktop menu */
+            
+            /* Section spacing reduction for minimal scrolling */
+            section { padding: 3.5rem 0; }
+            
+            /* Stack grids vertically cleanly */
+            .about-grid, .room-item { 
+                grid-template-columns: 1fr; 
+                gap: 2rem; 
+            }
+            /* Ensure image is always on top on mobile, regardless of 'reverse' class */
+            .room-item.reverse { 
+                direction: ltr; 
+                display: flex;
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2.5rem;
-                transition: var(--transition);
-                z-index: 999;
             }
-            .nav-menu.active { right: 0; }
-            .lang-toggle { border-left: none; padding-left: 0; margin-top: 1rem; }
-            .close-menu {
-                position: absolute;
-                top: 1.5rem;
-                right: 1.5rem;
-                font-size: 2rem;
-                cursor: pointer;
-                background: none;
-                border: none;
-                color: var(--text);
+            .room-item.reverse .room-img-wrapper {
+                order: 1;
             }
-            .about-grid, .room-item { grid-template-columns: 1fr; gap: 3rem; }
-            .room-item.reverse { direction: ltr; }
-            .about-img { height: 400px; }
+            .room-item.reverse .room-text {
+                order: 2;
+            }
+            
+            /* Image sizing for mobile */
+            .about-img { height: 350px; }
+            .room-img { aspect-ratio: 3/4; }
+            
+            /* Hero adjustments */
+            .hero { background-position: center 30%; }
+            .hero-content { padding: 1.5rem; }
+            
+            /* Buttons full width on mobile for easy thumb tapping */
+            .btn { width: 100%; }
+            
+            /* Footer spacing */
+            .footer-menu { gap: 1rem 1.5rem; }
+        }
+
+        /* Small phone adjustments */
+        @media (max-width: 400px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .container { padding: 0 1.2rem; }
+            .mobile-nav-link { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -420,20 +526,21 @@
     <header id="header">
         <a href="#home" class="logo">SOLENS</a>
         <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
-            <span></span><span></span>
+            <span></span><span></span><span></span>
         </div>
-        <ul class="nav-menu" id="navMenu">
-            <button class="close-menu" onclick="toggleMenu()" style="display: none;">×</button>
-            <li><a href="#home" class="nav-link" onclick="toggleMenu()">
+        
+        <!-- Desktop Menu (Hidden on Mobile) -->
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">
                 <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
             </a></li>
-            <li><a href="#booking" class="nav-link" onclick="toggleMenu()">
+            <li><a href="#booking" class="nav-link">
                 <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span>
             </a></li>
-            <li><a href="#about" class="nav-link" onclick="toggleMenu()">
+            <li><a href="#about" class="nav-link">
                 <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
             </a></li>
-            <li><a href="#contact" class="nav-link" onclick="toggleMenu()">
+            <li><a href="#contact" class="nav-link">
                 <span lang="en">Contact Us</span><span lang="hy">Կապ</span>
             </a></li>
             <li class="lang-toggle">
@@ -442,6 +549,27 @@
             </li>
         </ul>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <button class="close-menu" onclick="toggleMenu()" aria-label="Close menu">×</button>
+        <a href="#home" class="mobile-nav-link" onclick="toggleMenu()">
+            <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
+        </a>
+        <a href="#booking" class="mobile-nav-link" onclick="toggleMenu()">
+            <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span>
+        </a>
+        <a href="#about" class="mobile-nav-link" onclick="toggleMenu()">
+            <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
+        </a>
+        <a href="#contact" class="mobile-nav-link" onclick="toggleMenu()">
+            <span lang="en">Contact Us</span><span lang="hy">Կապ</span>
+        </a>
+        <div class="lang-toggle" style="border: none; margin-top: 1rem;">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('hy')">HY</button>
+        </div>
+    </div>
 
     <main>
         <!-- Hero Slide -->
@@ -453,7 +581,7 @@
                 </h1>
                 <p class="tagline">
                     <span lang="en">Where Art Meets the Lens…</span>
-                    <span lang="hy">Where Art Meets the Lens…</span>
+                    <span lang="hy">Որտեղ արվեստը հանդիպում է ոսպնյակին…</span>
                 </p>
             </div>
         </section>
@@ -463,8 +591,7 @@
             <div class="container">
                 <div class="about-grid">
                     <div class="fade-in">
-                        <!-- REPLACE THE SRC BELOW WITH YOUR ABOUT US IMAGE URL -->
-                        <img src="https://cdn.shopify.com/s/files/1/0840/3871/3600/files/c663464f90e4e9dcc05e97569d5a2edc.jpg?v=1790422831" class="about-img">
+                        <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About Solens Studio" class="about-img" loading="lazy">
                     </div>
                     <div class="about-text fade-in">
                         <h4>
@@ -473,7 +600,7 @@
                         </h4>
                         <h2>
                             <span lang="en">A Sanctuary for Light</span>
-                            <span lang="hy">A Sanctuary for Light</span>
+                            <span lang="hy">Լույսի Սրբավայր</span>
                         </h2>
                         <div class="divider" style="margin: 0 0 2rem 0;"></div>
                         <p>
@@ -502,13 +629,12 @@
                     <!-- Room 1 -->
                     <div class="room-item fade-in">
                         <div class="room-img-wrapper">
-                            <!-- REPLACE THE SRC BELOW WITH YOUR LIVING ROOM IMAGE URL -->
-                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Living Room Studio" class="room-img">
+                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Living Room Studio" class="room-img" loading="lazy">
                         </div>
                         <div class="room-text">
                             <h3>
-                                <span lang="en">Fashion Room</span>
-                                <span lang="hy">Fashion Room</span>
+                                <span lang="en">Living Room</span>
+                                <span lang="hy">Լիվինգ Ռում</span>
                             </h3>
                             <div class="room-price">
                                 <span lang="en">1 HOUR — 12,000 AMD</span>
@@ -528,8 +654,7 @@
                     <!-- Room 2 -->
                     <div class="room-item reverse fade-in">
                         <div class="room-img-wrapper">
-                            <!-- REPLACE THE SRC BELOW WITH YOUR KIDS ROOM IMAGE URL -->
-                            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kids Room Studio" class="room-img">
+                            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kids Room Studio" class="room-img" loading="lazy">
                         </div>
                         <div class="room-text">
                             <h3>
@@ -573,14 +698,14 @@
                             <span lang="en">Full Name</span>
                             <span lang="hy">Անուն Ազգանուն</span>
                         </label>
-                        <input type="text" required>
+                        <input type="text" required autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label>
                             <span lang="en">Phone Number</span>
                             <span lang="hy">Հեռախոսահամար</span>
                         </label>
-                        <input type="tel" required>
+                        <input type="tel" required autocomplete="tel">
                     </div>
                     <div class="form-group">
                         <label>
@@ -593,12 +718,12 @@
                                 <span lang="hy">Ընտրեք սրահ...</span>
                             </option>
                             <option value="living">
-                                <span lang="en">Fashion Room</span>
-                                <span lang="hy">Fashion Room</span>
+                                <span lang="en">Living Room</span>
+                                <span lang="hy">Լիվինգ Ռում</span>
                             </option>
                             <option value="kids">
                                 <span lang="en">Kids Room</span>
-                                <span lang="hy">Kids Room</span>
+                                <span lang="hy">Մանկական Սրահ</span>
                             </option>
                         </select>
                     </div>
@@ -609,7 +734,7 @@
                         </label>
                         <input type="datetime-local" required>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">
+                    <button type="submit" class="btn" style="margin-top: 1rem;">
                         <span lang="en">Send Request</span>
                         <span lang="hy">Ուղարկել Հայտ</span>
                     </button>
@@ -656,7 +781,7 @@
                 <span lang="en">ALL RIGHTS RESERVED.</span>
                 <span lang="hy">ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ:</span>
             </div>
-        </div.
+        </div>
     </footer>
 
     <!-- JavaScript -->
@@ -679,39 +804,24 @@
 
         // 2. Mobile Menu Toggle
         function toggleMenu() {
-            const nav = document.getElementById('navMenu');
-            const closeBtn = document.querySelector('.close-menu');
-            nav.classList.toggle('active');
-            
-            // Show/hide close button only on mobile
-            if (window.innerWidth <= 900) {
-                closeBtn.style.display = nav.classList.contains('active') ? 'block' : 'none';
-            }
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+            // Prevent background scrolling when menu is open
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
         }
 
-        // Ensure close button visibility is correct on resize
-        window.addEventListener('resize', () => {
-            const closeBtn = document.querySelector('.close-menu');
-            if (window.innerWidth > 900) {
-                closeBtn.style.display = 'none';
-                document.getElementById('navMenu').classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // 3. Header Background on Scroll
+        // 3. Header Background on Scroll (Passive listener for performance)
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
-            if (window.scrollY > 50) {
+            if (window.scrollY > 30) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-        });
+        }, { passive: true });
 
         // 4. Dynamic Fade-in Animation on Scroll
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -30px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
