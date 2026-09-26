@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Solens Photo Studio - Where art meets the Lens. Premium photography space in Yerevan.">
-    <title>SOLENS PHOTO STUDIO</title>
+    <meta name="description" content="Solens Photo Studio - Where Art Meets the Lens.">
+    <title>SOLENS PHOTOSTUDIO</title>
     
     <!-- Thin, Elegant Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,12 +14,11 @@
     <style>
         /* --- VARIABLES & RESET --- */
         :root {
-            /* Strict Requirements */
             --bg: #ffffff;
             --text: #000000;
             --text-muted: rgba(0, 0, 0, 0.6);
             
-            /* Brand Palette (Used strictly as elegant accents) */
+            /* Brand Palette (Used strictly as elegant, subtle accents) */
             --accent-sage: #ccd5ae;
             --accent-pale: #e9edc9;
             --accent-cream: #fefae0;
@@ -37,26 +36,26 @@
         body {
             font-family: var(--font-body);
             font-weight: 300;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--bg); /* Completely white background */
+            color: var(--text); /* Black text */
             line-height: 1.8;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
         /* --- TYPOGRAPHY (ALWAYS ALL CAPS FOR TITLES) --- */
-        h1, h2, h3, h4, .logo, .nav-link, .btn, .lang-btn {
+        h1, h2, h3, h4, .logo, .nav-link, .btn, .lang-btn, .footer-link {
             font-family: var(--font-heading);
             font-weight: 300;
-            text-transform: uppercase;
+            text-transform: uppercase; /* Always all caps */
             letter-spacing: 0.2em;
             color: var(--text);
         }
         
-        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
-        h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1rem; text-align: center; }
-        h3 { font-size: 1.3rem; margin-bottom: 1rem; letter-spacing: 0.15em; }
-        h4 { font-size: 0.9rem; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 0.5rem; }
+        h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 1rem; }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.5rem; text-align: center; }
+        h3 { font-size: 1.4rem; margin-bottom: 1rem; letter-spacing: 0.15em; }
+        h4 { font-size: 0.85rem; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 1rem; font-family: var(--font-body); font-weight: 400; }
         
         p, span, a, label, input, textarea, button {
             font-family: var(--font-body);
@@ -69,36 +68,35 @@
             font-style: italic;
             font-weight: 300;
             font-size: clamp(1.1rem, 2vw, 1.5rem);
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: var(--text-muted);
-            margin-bottom: 3rem;
         }
 
         .divider {
-            width: 60px;
+            width: 50px;
             height: 1px;
             background-color: var(--accent-tan);
-            margin: 0 auto 4rem;
+            margin: 0 auto 3rem;
         }
 
         /* --- UTILITIES --- */
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 3rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         
         /* Language Visibility Logic */
         [lang="hy"] { display: none; }
         body.lang-hy [lang="en"] { display: none !important; }
         body.lang-hy [lang="hy"] { display: block; }
-        body.lang-hy span[lang="hy"], body.lang-hy a[lang="hy"], body.lang-hy h4[lang="hy"] { display: inline; }
-        span[lang="en"], a[lang="en"], h4[lang="en"] { display: inline; }
-        body.lang-hy span[lang="en"], body.lang-hy a[lang="en"], body.lang-hy h4[lang="en"] { display: none !important; }
+        body.lang-hy span[lang="hy"], body.lang-hy a[lang="hy"] { display: inline; }
+        span[lang="en"], a[lang="en"] { display: inline; }
+        body.lang-hy span[lang="en"], body.lang-hy a[lang="en"] { display: none !important; }
 
-        /* --- HEADER --- */
+        /* --- HEADER & MENU --- */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 2.5rem 3rem;
+            padding: 2rem 3rem;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
@@ -108,77 +106,34 @@
         }
         header.scrolled {
             background: rgba(255, 255, 255, 0.98);
-            padding: 1.5rem 3rem;
+            padding: 1.2rem 3rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 400;
             text-decoration: none;
             letter-spacing: 0.3em;
         }
-        .header-right {
+        
+        .nav-menu {
             display: flex;
+            list-style: none;
+            gap: 2.5rem;
             align-items: center;
-            gap: 2rem;
         }
-        .lang-switch {
-            display: flex;
-            gap: 0.5rem;
-        }
-        .lang-btn {
-            background: none;
-            border: none;
-            font-size: 0.75rem;
-            cursor: pointer;
-            padding: 0.2rem 0.5rem;
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-        .lang-btn.active {
-            color: var(--text);
-            border-bottom: 1px solid var(--accent-tan);
-        }
-        .hamburger { 
-            display: none; 
-            cursor: pointer; 
-            flex-direction: column; 
-            gap: 8px; 
-        }
-        .hamburger span { 
-            width: 28px; 
-            height: 1px; 
-            background-color: var(--text); 
-            transition: var(--transition); 
-        }
-
-        /* --- NAVIGATION --- */
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100vh;
-            background: var(--bg);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            transition: var(--transition);
-        }
-        .nav-overlay.active { right: 0; }
         .nav-link {
-            font-size: 1.5rem;
+            font-size: 0.75rem;
             text-decoration: none;
             position: relative;
             transition: var(--transition);
+            font-family: var(--font-body);
+            font-weight: 400;
         }
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
             width: 0;
             height: 1px;
@@ -186,18 +141,31 @@
             transition: var(--transition);
         }
         .nav-link:hover::after { width: 100%; }
-        .close-menu {
-            position: absolute;
-            top: 2.5rem;
-            right: 3rem;
-            font-size: 2rem;
-            cursor: pointer;
+        
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            padding-left: 1.5rem;
+        }
+        .lang-btn {
             background: none;
             border: none;
+            font-size: 0.7rem;
+            cursor: pointer;
+            padding: 0.2rem 0.3rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .lang-btn.active {
             color: var(--text);
+            border-bottom: 1px solid var(--accent-tan);
         }
 
-        /* --- HERO --- */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
+        .hamburger span { width: 24px; height: 1px; background-color: var(--text); transition: var(--transition); }
+
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -206,41 +174,36 @@
             text-align: center;
             position: relative;
             background-color: var(--bg);
-        }
-        /* Subtle, elegant background image with heavy white overlay to maintain "completely white" feel */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            opacity: 0.06;
-            z-index: 0;
+            /* The exact image provided, with a subtle white overlay to ensure black text readability and maintain the "white" aesthetic */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('https://cdn.shopify.com/s/files/1/0840/3871/3600/files/5849316175630765861.jpg?v=1790421159');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 900px;
             padding: 2rem;
             opacity: 0;
             transform: translateY(40px);
             animation: fadeInUp 1.2s ease forwards 0.4s;
         }
 
-        /* --- SECTIONS --- */
+        /* --- SECTIONS GENERAL --- */
         section { padding: 8rem 0; background-color: var(--bg); }
         
-        /* --- ABOUT --- */
+        /* --- ABOUT US --- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6rem;
+            gap: 5rem;
             align-items: center;
         }
         .about-img {
             width: 100%;
-            height: 650px;
+            height: 600px;
             object-fit: cover;
-            filter: grayscale(15%);
+            filter: grayscale(10%);
             transition: var(--transition);
         }
         .about-img:hover { filter: grayscale(0%); }
@@ -248,109 +211,81 @@
             font-size: 1.05rem;
             line-height: 2;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* --- SPACES (Like Blanc Studio) --- */
-        .spaces-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 4rem;
-            margin-top: 4rem;
-        }
-        .space-card {
+        /* --- ROOMS SECTION --- */
+        .rooms-container {
             display: flex;
             flex-direction: column;
+            gap: 6rem;
         }
-        .space-img-wrapper {
+        .room-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .room-item.reverse { direction: rtl; }
+        .room-item.reverse .room-text { direction: ltr; }
+        
+        .room-img {
             width: 100%;
             aspect-ratio: 4/5;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        .space-img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-            transition: transform 1.2s ease;
+            transition: transform 1s ease;
         }
-        .space-card:hover .space-img { transform: scale(1.03); }
-        .space-price {
-            font-family: var(--font-body);
+        .room-img-wrapper { overflow: hidden; }
+        .room-img-wrapper:hover .room-img { transform: scale(1.03); }
+        
+        .room-price {
             font-size: 0.85rem;
             letter-spacing: 0.15em;
             color: var(--accent-tan);
-            margin-bottom: 1rem;
+            margin: 1.5rem 0;
             font-weight: 400;
         }
-        .space-desc {
+        .room-desc {
             font-size: 0.95rem;
             line-height: 1.9;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
-        .link-text {
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--text);
-            border-bottom: 1px solid transparent;
-            transition: var(--transition);
-            display: inline-block;
-            margin-top: auto;
-        }
-        .link-text:hover { border-bottom-color: var(--accent-tan); color: var(--accent-tan); }
 
-        /* --- PORTFOLIO --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 3/4;
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            border: 1px solid var(--text);
+            transition: var(--transition);
             cursor: pointer;
         }
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease, filter 0.5s ease;
-            filter: grayscale(30%);
+        .btn:hover {
+            background: var(--text);
+            color: var(--bg);
         }
-        .portfolio-item:hover img { 
-            transform: scale(1.04); 
-            filter: grayscale(0%);
+        .btn-accent {
+            border-color: var(--accent-tan);
+            color: var(--accent-tan);
         }
-        .portfolio-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            opacity: 0;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-        .portfolio-overlay span {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+        .btn-accent:hover {
+            background: var(--accent-tan);
+            color: var(--bg);
         }
 
-        /* --- MINIMALIST BOOKING --- */
-        .booking-section { text-align: center; }
+        /* --- BOOKING FORM --- */
+        .booking-section { text-align: center; border-top: 1px solid rgba(0,0,0,0.05); }
         .booking-form {
-            max-width: 550px;
-            margin: 4rem auto 0;
+            max-width: 500px;
+            margin: 3rem auto 0;
             display: grid;
-            gap: 2.5rem;
+            gap: 2rem;
         }
         .form-group { text-align: left; }
         .form-group label {
@@ -367,7 +302,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.15);
             background: transparent;
             font-family: var(--font-body);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 300;
             color: var(--text);
             transition: var(--transition);
@@ -378,33 +313,6 @@
             border-bottom-color: var(--accent-tan);
         }
         .form-group textarea { resize: vertical; min-height: 80px; }
-        .form-group select {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0rem center;
-            background-size: 0.6rem;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 1.2rem;
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--text);
-            font-family: var(--font-heading);
-            font-size: 0.85rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 1rem;
-        }
-        .btn-submit:hover {
-            background: var(--text);
-            color: var(--bg);
-            border-color: var(--text);
-        }
 
         /* --- FOOTER --- */
         footer {
@@ -415,32 +323,41 @@
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         .footer-logo {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
             letter-spacing: 0.3em;
-            text-transform: uppercase;
         }
-        .social-links {
+        .footer-menu {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin: 3rem 0;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
-        .social-links a {
-            color: var(--text);
+        .footer-link {
+            font-size: 0.75rem;
             text-decoration: none;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            font-family: var(--font-body);
+            font-weight: 400;
             transition: var(--transition);
         }
-        .social-links a:hover { color: var(--accent-tan); }
+        .footer-link:hover { color: var(--accent-tan); }
+        
+        .contact-info {
+            margin-bottom: 3rem;
+            line-height: 2;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .contact-info strong {
+            color: var(--text);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+        }
         .copyright {
             font-size: 0.7rem;
             color: var(--text-muted);
-            margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
             letter-spacing: 0.1em;
@@ -465,79 +382,89 @@
             .container { padding: 0 1.5rem; }
             header { padding: 1.5rem; }
             .hamburger { display: flex; }
-            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            .nav-menu.active { right: 0; }
+            .lang-toggle { border-left: none; padding-left: 0; margin-top: 1rem; }
+            .close-menu {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 2rem;
+                cursor: pointer;
+                background: none;
+                border: none;
+                color: var(--text);
+            }
+            .about-grid, .room-item { grid-template-columns: 1fr; gap: 3rem; }
+            .room-item.reverse { direction: ltr; }
             .about-img { height: 400px; }
-            .spaces-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .portfolio-grid { grid-template-columns: 1fr 1fr; }
-            .lang-switch { margin-right: 1rem; }
-        }
-        @media (max-width: 600px) {
-            .portfolio-grid { grid-template-columns: 1fr; }
-            h1 { letter-spacing: 0.1em; }
         }
     </style>
 </head>
 <body class="lang-en">
 
-    <!-- Header -->
+    <!-- Header & Menu -->
     <header id="header">
-        <a href="#" class="logo">SOLENS</a>
-        <div class="header-right">
-            <div class="lang-switch">
+        <a href="#home" class="logo">SOLENS</a>
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+            <span></span><span></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <button class="close-menu" onclick="toggleMenu()" style="display: none;">×</button>
+            <li><a href="#home" class="nav-link" onclick="toggleMenu()">
+                <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
+            </a></li>
+            <li><a href="#booking" class="nav-link" onclick="toggleMenu()">
+                <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել Ստուդիա</span>
+            </a></li>
+            <li><a href="#about" class="nav-link" onclick="toggleMenu()">
+                <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
+            </a></li>
+            <li><a href="#contact" class="nav-link" onclick="toggleMenu()">
+                <span lang="en">Contact Us</span><span lang="hy">Կապ</span>
+            </a></li>
+            <li class="lang-toggle">
                 <button class="lang-btn active" onclick="setLang('en')">EN</button>
                 <button class="lang-btn" onclick="setLang('hy')">HY</button>
-            </div>
-            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
-                <span></span><span></span>
-            </div>
-        </div>
+            </li>
+        </ul>
     </header>
 
-    <!-- Mobile Navigation Overlay -->
-    <div class="nav-overlay" id="navOverlay">
-        <button class="close-menu" onclick="toggleMenu()">×</button>
-        <a href="#hero" class="nav-link" onclick="toggleMenu()">
-            <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
-        </a>
-        <a href="#about" class="nav-link" onclick="toggleMenu()">
-            <span lang="en">About</span><span lang="hy">Մեր Մասին</span>
-        </a>
-        <a href="#spaces" class="nav-link" onclick="toggleMenu()">
-            <span lang="en">Spaces</span><span lang="hy">Տարածքներ</span>
-        </a>
-        <a href="#portfolio" class="nav-link" onclick="toggleMenu()">
-            <span lang="en">Portfolio</span><span lang="hy">Պորտֆոլիո</span>
-        </a>
-        <a href="#booking" class="nav-link" onclick="toggleMenu()">
-            <span lang="en">Book Now</span><span lang="hy">Ամրագրել</span>
-        </a>
-    </div>
-
     <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero">
+        <!-- Hero Slide -->
+        <section id="home" class="hero">
             <div class="hero-content">
                 <h1>
-                    <span lang="en">Solens Photo Studio</span>
+                    <span lang="en">Solens Photostudio</span>
                     <span lang="hy">Solens Ֆոտոստուդիա</span>
                 </h1>
                 <p class="tagline">
-                    <span lang="en">Where art meets the Lens...</span>
-                    <span lang="hy">Որտեղ արվեստը հանդիպում է ոսպնյակին...</span>
+                    <span lang="en">Where Art Meets the Lens…</span>
+                    <span lang="hy">Որտեղ արվեստը հանդիպում է ոսպնյակին…</span>
                 </p>
-                <a href="#booking" class="btn-submit" style="display: inline-block; width: auto; padding: 1rem 3rem; text-decoration: none;">
-                    <span lang="en">Reserve Your Space</span>
-                    <span lang="hy">Ամրագրել Տարածք</span>
-                </a>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- About Us Section -->
         <section id="about">
             <div class="container">
                 <div class="about-grid">
                     <div class="fade-in">
-                        <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solens Studio Interior" class="about-img">
+                        <!-- REPLACE THE SRC BELOW WITH YOUR ABOUT US IMAGE URL -->
+                        <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About Solens Studio" class="about-img">
                     </div>
                     <div class="about-text fade-in">
                         <h4>
@@ -545,124 +472,89 @@
                             <span lang="hy">Մեր Մասին</span>
                         </h4>
                         <h2>
-                            <span lang="en">A Sanctuary for Light and Creativity</span>
-                            <span lang="hy">Լույսի և Ստեղծագործականության Սրբավայր</span>
+                            <span lang="en">A Sanctuary for Light</span>
+                            <span lang="hy">Լույսի Սրբավայր</span>
                         </h2>
-                        <div class="divider" style="margin: 2rem 0;"></div>
+                        <div class="divider" style="margin: 0 0 2rem 0;"></div>
                         <p>
-                            <span lang="en">Solens Studio is a premium photo studio located in the heart of Yerevan, offering a complete package of photography services. Our spaces feature large windows, high ceilings, and professional equipment. We constantly follow the latest trends in art and design, providing unique, aesthetically furnished rooms that allow you to quickly create unrepeatable photo zones. We aim to strengthen the Armenian photography community by bringing everyone together into one hub to collaborate, exchange ideas, and create timeless art.</span>
-                            <span lang="hy">Solens ստուդիան պրեմիում դասի ֆոտոստուդիա է, որը գտնվում է Երևանի կենտրոնում և առաջարկում է լուսանկարչական ծառայությունների ամբողջական փաթեթ։ Մեր տարածքներն աչքի են ընկնում մեծ պատուհաններով, բարձր առաստաղներով և պրոֆեսիոնալ տեխնիկայով։ Մենք մշտապես հետևում ենք արվեստի և դիզայնի վերջին միտումներին՝ ապահովելով եզակի, էսթետիկ կահավորված սենյակներ, որոնք թույլ են տալիս արագ ստեղծել չկրկնվող ֆոտոգոտիներ։ Մեր նպատակն է հզորացնել հայ լուսանկարչական համայնքը՝ բոլորին համախմբելով մեկ հարթակում՝ համագործակցելու, գաղափարներ փոխանակելու և հավերժական արվեստ ստեղծելու համար։</span>
+                            <span lang="en">Solens Photo Studio is a premium creative space located in the heart of Yerevan. Designed with Scandinavian minimalism and natural light in mind, our studio offers high ceilings, large windows, and aesthetically furnished zones. We provide a complete package of photography services, free professional equipment, and a welcoming environment where your creative vision can truly flourish.</span>
+                            <span lang="hy">Solens ֆոտոստուդիան պրեմիում դասի ստեղծագործական տարածք է Երևանի կենտրոնում։ Սկանդինավյան մինիմալիզմի և բնական լույսի սկզբունքներով նախագծված մեր ստուդիան առաջարկում է բարձր առաստաղներ, մեծ պատուհաններ և էսթետիկ կահավորված գոտիներ։ Մենք տրամադրում ենք լուսանկարչական ծառայությունների ամբողջական փաթեթ, անվճար պրոֆեսիոնալ տեխնիկա և հյուրընկալ միջավայր, որտեղ ձեր ստեղծագործական տեսլականը կարող է իսկապես ծաղկել։</span>
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Spaces Section (Mimicking Blanc Studio's layout) -->
-        <section id="spaces">
+        <!-- Rooms Sections -->
+        <section id="rooms">
             <div class="container">
                 <h4 class="fade-in" style="text-align: center;">
-                    <span lang="en">Our Pavilions</span>
-                    <span lang="hy">Մեր Տաղավարները</span>
+                    <span lang="en">Our Spaces</span>
+                    <span lang="hy">Մեր Տարածքները</span>
                 </h4>
                 <h2 class="fade-in">
-                    <span lang="en">Aesthetically Furnished Spaces</span>
-                    <span lang="hy">Էսթետիկ Կահավորված Տարածքներ</span>
+                    <span lang="en">The Studios</span>
+                    <span lang="hy">Ստուդիաները</span>
                 </h2>
                 <div class="divider fade-in"></div>
-                
-                <div class="spaces-grid">
-                    <!-- Space 1 -->
-                    <div class="space-card fade-in">
-                        <div class="space-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Main Hall" class="space-img">
+
+                <div class="rooms-container">
+                    <!-- Room 1 -->
+                    <div class="room-item fade-in">
+                        <div class="room-img-wrapper">
+                            <!-- REPLACE THE SRC BELOW WITH YOUR LIVING ROOM IMAGE URL -->
+                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Living Room Studio" class="room-img">
                         </div>
-                        <h3>
-                            <span lang="en">The Main Hall</span>
-                            <span lang="hy">Գլխավոր Սրահ</span>
-                        </h3>
-                        <div class="space-price">
-                            <span lang="en">1 HOUR — 15,000 AMD</span>
-                            <span lang="hy">1 ԺԱՄ — 15,000 ԴՐԱՄ</span>
+                        <div class="room-text">
+                            <h3>
+                                <span lang="en">Living Room</span>
+                                <span lang="hy">Լիվինգ Ռում</span>
+                            </h3>
+                            <div class="room-price">
+                                <span lang="en">1 HOUR — 12,000 AMD</span>
+                                <span lang="hy">1 ԺԱՄ — 12,000 ԴՐԱՄ</span>
+                            </div>
+                            <p class="room-desc">
+                                <span lang="en">A 110-square-meter space designed in Scandinavian and modern styles, featuring large south-facing windows and a ceiling height of 4.5 meters. Includes a cyclorama, abundant natural light, a dressing room, and designer furniture. Perfect for fashion, commercial projects, and family sessions.</span>
+                                <span lang="hy">110 քառակուսի մետր տարածք՝ սկանդինավյան և ժամանակակից ոճով, մեծ պատուհաններով և 4.5 մետր բարձր առաստաղով։ Ներառում է ցիկլորամա, առատ բնական լույս, հանդերձարան և դիզայներական կահույք։ Իդեալական է նորաձևության, առևտրային նախագծերի և ընտանեկան նկարահանումների համար։</span>
+                            </p>
+                            <a href="#booking" class="btn btn-accent">
+                                <span lang="en">Book a Studio</span>
+                                <span lang="hy">Ամրագրել Ստուդիա</span>
+                            </a>
                         </div>
-                        <p class="space-desc">
-                            <span lang="en">A 120-square-meter space designed in Scandinavian and modern styles, featuring large south-facing windows and a ceiling height of 4.5 meters. Includes a cyclorama and abundant natural light from 10:30 AM to 6:00 PM. Furnished with a white sectional sofa, minimalist armchairs, and designer pieces. Perfect for fashion, commercial projects, and family sessions.</span>
-                            <span lang="hy">120 քառակուսի մետր տարածք՝ սկանդինավյան և ժամանակակից ոճով, մեծ պատուհաններով և 4.5 մետր բարձր առաստաղով։ Ներառում է ցիկլորամա և առատ բնական լույս՝ առավոտյան 10:30-ից մինչև երեկոյան 6:00։ Կահավորված է սպիտակ բազմոցով, մինիմալիստական բազկաթոռներով և դիզայներական կահույքով։ Իդեալական է նորաձևության, առևտրային նախագծերի և ընտանեկան նկարահանումների համար։</span>
-                        </p>
-                        <a href="#booking" class="link-text">
-                            <span lang="en">Book This Space</span>
-                            <span lang="hy">Ամրագրել Այս Տարածքը</span>
-                        </a>
                     </div>
 
-                    <!-- Space 2 -->
-                    <div class="space-card fade-in">
-                        <div class="space-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Creative Loft" class="space-img">
+                    <!-- Room 2 -->
+                    <div class="room-item reverse fade-in">
+                        <div class="room-img-wrapper">
+                            <!-- REPLACE THE SRC BELOW WITH YOUR KIDS ROOM IMAGE URL -->
+                            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kids Room Studio" class="room-img">
                         </div>
-                        <h3>
-                            <span lang="en">The Creative Loft</span>
-                            <span lang="hy">Ստեղծագործական Լոֆտ</span>
-                        </h3>
-                        <div class="space-price">
-                            <span lang="en">1 HOUR — 12,000 AMD</span>
-                            <span lang="hy">1 ԺԱՄ — 12,000 ԴՐԱՄ</span>
+                        <div class="room-text">
+                            <h3>
+                                <span lang="en">Kids Room</span>
+                                <span lang="hy">Մանկական Սրահ</span>
+                            </h3>
+                            <div class="room-price">
+                                <span lang="en">1 HOUR — 12,000 AMD</span>
+                                <span lang="hy">1 ԺԱՄ — 12,000 ԴՐԱՄ</span>
+                            </div>
+                            <p class="room-desc">
+                                <span lang="en">A 50-square-meter space inspired by Scandinavian design principles, combining functionality, simplicity, and aesthetics. Filled with natural light, props, and accessories that can be easily rearranged. Ideal for baby milestones, birthdays, family photoshoots, and children’s clothing content.</span>
+                                <span lang="hy">50 քառակուսի մետր տարածք՝ ոգեշնչված սկանդինավյան դիզայնի սկզբունքներով, որը համատեղում է ֆունկցիոնալությունը, պարզությունը և գեղագիտությունը։ Լի է բնական լույսով, դեկորացիաներով և աքսեսուարներով, որոնք հեշտությամբ վերադասավորվում են։ Իդեալական է մանկական տոների, ընտանեկան նկարահանումների և մանկական հագուստի կոնտենտի համար։</span>
+                            </p>
+                            <a href="#booking" class="btn btn-accent">
+                                <span lang="en">Book a Studio</span>
+                                <span lang="hy">Ամրագրել Ստուդիա</span>
+                            </a>
                         </div>
-                        <p class="space-desc">
-                            <span lang="en">An intimate 60-square-meter space inspired by minimalist design principles. Features textured backdrops, vintage props, and soft natural light. The setup includes small tables, chairs, and accessories that can be easily rearranged to create unique photo zones. Ideal for newborn milestones, birthdays, portrait sessions, and e-commerce content creation.</span>
-                            <span lang="hy">60 քառակուսի մետր ինտիմ տարածք՝ ոգեշնչված մինիմալիստական դիզայնի սկզբունքներով։ Ունի հյուսվածքային ֆոներ, վինտաժային աքսեսուարներ և մեղմ բնական լույս։ Ներառում է սեղաններ, աթոռներ և աքսեսուարներ, որոնք հեշտությամբ վերադասավորվում են՝ ստեղծելով եզակի ֆոտոգոտիներ։ Իդեալական է նորածինների, ծննդյան, դիմանկարային նկարահանումների և առցանց խանութների կոնտենտի համար։</span>
-                        </p>
-                        <a href="#booking" class="link-text">
-                            <span lang="en">Book This Space</span>
-                            <span lang="hy">Ամրագրել Այս Տարածքը</span>
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio">
-            <div class="container">
-                <h4 class="fade-in" style="text-align: center;">
-                    <span lang="en">Selected Works</span>
-                    <span lang="hy">Ընտրյալ Աշխատանքներ</span>
-                </h4>
-                <h2 class="fade-in">
-                    <span lang="en">Through The Lens</span>
-                    <span lang="hy">Ոսպնյակի Միջով</span>
-                </h2>
-                <div class="divider fade-in"></div>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Portrait">
-                        <div class="portfolio-overlay"><span>Portrait</span></div>
-                    </div>
-                    <div class="portfolio-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding">
-                        <div class="portfolio-overlay"><span>Wedding</span></div>
-                    </div>
-                    <div class="portfolio-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion">
-                        <div class="portfolio-overlay"><span>Fashion</span></div>
-                    </div>
-                    <div class="portfolio-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lifestyle">
-                        <div class="portfolio-overlay"><span>Lifestyle</span></div>
-                    </div>
-                    <div class="portfolio-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Editorial">
-                        <div class="portfolio-overlay"><span>Editorial</span></div>
-                    </div>
-                    <div class="portfolio-item fade-in">
-                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Commercial">
-                        <div class="portfolio-overlay"><span>Commercial</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Minimalist Booking Section -->
+        <!-- Booking Section -->
         <section id="booking" class="booking-section">
             <div class="container">
                 <h4 class="fade-in">
@@ -670,14 +562,10 @@
                     <span lang="hy">Ամրագրումներ</span>
                 </h4>
                 <h2 class="fade-in">
-                    <span lang="en">Book Your Session</span>
-                    <span lang="hy">Ամրագրեք Ձեր Նիստը</span>
+                    <span lang="en">Book a Studio</span>
+                    <span lang="hy">Ամրագրել Ստուդիա</span>
                 </h2>
                 <div class="divider fade-in"></div>
-                <p class="fade-in" style="color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.05em; max-width: 500px; margin: 0 auto;">
-                    <span lang="en">Fill out the minimalist form below and we will confirm your reservation within 24 hours.</span>
-                    <span lang="hy">Լրացրեք ստորև բերված պարզ ձևը, և մենք կհաստատենք Ձեր ամրագրումը 24 ժամվա ընթացքում:</span>
-                </p>
                 
                 <form class="booking-form fade-in" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon. / Շնորհակալություն: Մենք շուտով կկապվենք Ձեզ հետ:');">
                     <div class="form-group">
@@ -689,13 +577,6 @@
                     </div>
                     <div class="form-group">
                         <label>
-                            <span lang="en">Email Address</span>
-                            <span lang="hy">Էլեկտրոնային Հասցե</span>
-                        </label>
-                        <input type="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>
                             <span lang="en">Phone Number</span>
                             <span lang="hy">Հեռախոսահամար</span>
                         </label>
@@ -703,21 +584,21 @@
                     </div>
                     <div class="form-group">
                         <label>
-                            <span lang="en">Preferred Space</span>
-                            <span lang="hy">Ցանկալի Տարածք</span>
+                            <span lang="en">Preferred Room</span>
+                            <span lang="hy">Ցանկալի Սրահ</span>
                         </label>
                         <select required>
                             <option value="" disabled selected>
-                                <span lang="en">Select a space...</span>
-                                <span lang="hy">Ընտրեք տարածք...</span>
+                                <span lang="en">Select a room...</span>
+                                <span lang="hy">Ընտրեք սրահ...</span>
                             </option>
-                            <option value="main">
-                                <span lang="en">The Main Hall</span>
-                                <span lang="hy">Գլխավոր Սրահ</span>
+                            <option value="living">
+                                <span lang="en">Living Room</span>
+                                <span lang="hy">Լիվինգ Ռում</span>
                             </option>
-                            <option value="loft">
-                                <span lang="en">The Creative Loft</span>
-                                <span lang="hy">Ստեղծագործական Լոֆտ</span>
+                            <option value="kids">
+                                <span lang="en">Kids Room</span>
+                                <span lang="hy">Մանկական Սրահ</span>
                             </option>
                         </select>
                     </div>
@@ -728,14 +609,7 @@
                         </label>
                         <input type="datetime-local" required>
                     </div>
-                    <div class="form-group">
-                        <label>
-                            <span lang="en">Additional Notes</span>
-                            <span lang="hy">Լրացուցիչ Նշումներ</span>
-                        </label>
-                        <textarea></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">
                         <span lang="en">Send Request</span>
                         <span lang="hy">Ուղարկել Հայտ</span>
                     </button>
@@ -745,24 +619,44 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="container">
-            <div class="footer-logo">Solens</div>
-            <p class="tagline" style="margin-bottom: 2rem; font-size: 1rem;">
-                <span lang="en">Where art meets the Lens...</span>
-                <span lang="hy">Որտեղ արվեստը հանդիպում է ոսպնյակին...</span>
-            </p>
-            <div class="social-links">
-                <a href="#" aria-label="Instagram">Instagram</a>
-                <a href="#" aria-label="Facebook">Facebook</a>
-                <a href="#" aria-label="WhatsApp">WhatsApp</a>
+            <div class="footer-logo">SOLENS</div>
+            
+            <div class="footer-menu">
+                <a href="#home" class="footer-link">
+                    <span lang="en">Home</span><span lang="hy">Գլխավոր</span>
+                </a>
+                <a href="#about" class="footer-link">
+                    <span lang="en">About Us</span><span lang="hy">Մեր Մասին</span>
+                </a>
+                <a href="#rooms" class="footer-link">
+                    <span lang="en">Studios</span><span lang="hy">Ստուդիաներ</span>
+                </a>
+                <a href="#booking" class="footer-link">
+                    <span lang="en">Book a Studio</span><span lang="hy">Ամրագրել</span>
+                </a>
             </div>
+
+            <div class="contact-info">
+                <p><strong>
+                    <span lang="en">ADDRESS</span><span lang="hy">ՀԱՍՑԵ</span>
+                </strong><br>
+                <span lang="en">Yerevan, Armenia</span><span lang="hy">Երևան, Հայաստան</span></p>
+                
+                <p style="margin-top: 1rem;"><strong>
+                    <span lang="en">CONTACT</span><span lang="hy">ԿԱՊ</span>
+                </strong><br>
+                +374 XX XXX XXX<br>
+                info@solensstudio.am</p>
+            </div>
+
             <div class="copyright">
-                &copy; 2026 SOLENS PHOTO STUDIO. 
+                &copy; 2026 SOLENS PHOTOSTUDIO. 
                 <span lang="en">ALL RIGHTS RESERVED.</span>
                 <span lang="hy">ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ:</span>
             </div>
-        </div>
+        </div.
     </footer>
 
     <!-- JavaScript -->
@@ -785,10 +679,26 @@
 
         // 2. Mobile Menu Toggle
         function toggleMenu() {
-            const nav = document.getElementById('navOverlay');
+            const nav = document.getElementById('navMenu');
+            const closeBtn = document.querySelector('.close-menu');
             nav.classList.toggle('active');
+            
+            // Show/hide close button only on mobile
+            if (window.innerWidth <= 900) {
+                closeBtn.style.display = nav.classList.contains('active') ? 'block' : 'none';
+            }
             document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
         }
+
+        // Ensure close button visibility is correct on resize
+        window.addEventListener('resize', () => {
+            const closeBtn = document.querySelector('.close-menu');
+            if (window.innerWidth > 900) {
+                closeBtn.style.display = 'none';
+                document.getElementById('navMenu').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
 
         // 3. Header Background on Scroll
         window.addEventListener('scroll', () => {
@@ -800,24 +710,18 @@
             }
         });
 
-        // 4. Dynamic Fade-in Animation on Scroll (Intersection Observer)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // 4. Dynamic Fade-in Animation on Scroll
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
