@@ -3,57 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Solens Photo Studio - Capturing your moments with elegance and light.">
-    <title>Solens Photo Studio</title>
+    <meta name="description" content="Solens Photo Studio - Where art meets the Lens.">
+    <title>SOLENS PHOTO STUDIO</title>
     
-    <!-- Elegant Google Fonts -->
+    <!-- Thin, Elegant Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     
     <style>
         /* --- Color Palette & Variables --- */
         :root {
+            /* Brand Accents (Used sparingly for elegance) */
             --color-sage: #ccd5ae;
             --color-pale: #e9edc9;
             --color-cream: #fefae0;
             --color-peach: #faedcd;
             --color-tan: #d4a373;
-            --color-text: #5c4b37; /* Darker brown derived from palette for readability */
-            --color-text-light: #8c7b66;
+            
+            /* Strict Requirements */
+            --color-bg: #ffffff;
+            --color-text: #000000;
+            --color-text-secondary: rgba(0, 0, 0, 0.75);
+            
             --font-heading: 'Cormorant Garamond', serif;
             --font-body: 'Montserrat', sans-serif;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         /* --- Reset & Base --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        
         body {
             font-family: var(--font-body);
-            background-color: var(--color-cream);
-            color: var(--color-text);
-            line-height: 1.6;
+            font-weight: 300; /* Thin elegant font */
+            background-color: var(--color-bg); /* Completely white background */
+            color: var(--color-text); /* Black text */
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* --- Typography --- */
-        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; }
-        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; text-align: center; }
-        p { font-size: 1rem; color: var(--color-text-light); }
+        /* --- Typography: ALWAYS ALL CAPS FOR TITLES --- */
+        h1, h2, h3, h4, .logo {
+            font-family: var(--font-heading);
+            font-weight: 300; /* Thin elegant font */
+            text-transform: uppercase; /* Always all caps */
+            letter-spacing: 0.2em;
+            color: var(--color-text);
+        }
+        
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin-bottom: 1rem; }
+        h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 2rem; text-align: center; }
+        h3 { font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 0.15em; }
+        
+        p, span, a, label, input, textarea, button {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--color-text);
+        }
+        
+        .tagline {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            letter-spacing: 0.1em;
+            color: var(--color-text-secondary);
+            margin-bottom: 2.5rem;
+        }
 
         /* --- Utilities --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
         .btn {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background-color: var(--color-tan);
-            color: var(--color-cream);
+            padding: 1rem 3rem;
+            background-color: var(--color-tan); /* Palette accent */
+            color: #ffffff;
             text-decoration: none;
             font-family: var(--font-body);
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             border: 1px solid var(--color-tan);
             transition: var(--transition);
@@ -61,15 +93,17 @@
         }
         .btn:hover {
             background-color: transparent;
-            color: var(--color-tan);
+            color: var(--color-text);
+            border-color: var(--color-text);
         }
         .btn-outline {
             background-color: transparent;
-            color: var(--color-tan);
+            color: var(--color-text);
+            border: 1px solid var(--color-text);
         }
         .btn-outline:hover {
-            background-color: var(--color-tan);
-            color: var(--color-cream);
+            background-color: var(--color-text);
+            color: #ffffff;
         }
 
         /* --- Language Switcher --- */
@@ -80,27 +114,27 @@
             z-index: 1000;
             display: flex;
             gap: 0.5rem;
-            background: rgba(254, 250, 224, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 0.4rem;
-            border-radius: 20px;
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--color-pale);
+            border-radius: 2px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         .lang-btn {
             background: none;
             border: none;
             font-family: var(--font-body);
-            font-size: 0.8rem;
-            font-weight: 500;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
             cursor: pointer;
             padding: 0.4rem 1rem;
-            border-radius: 15px;
-            color: var(--color-text-light);
+            color: var(--color-text-secondary);
             transition: var(--transition);
+            text-transform: uppercase;
         }
         .lang-btn.active {
-            background-color: var(--color-tan);
-            color: var(--color-cream);
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-tan);
         }
 
         /* Language Visibility Logic */
@@ -117,15 +151,15 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.5rem 0;
+            padding: 2rem 0;
             z-index: 999;
             transition: var(--transition);
+            background-color: transparent;
         }
         header.scrolled {
-            background: rgba(254, 250, 224, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(92, 75, 55, 0.05);
-            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 1.2rem 0;
         }
         .nav-container {
             display: flex;
@@ -133,26 +167,26 @@
             align-items: center;
         }
         .logo {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 400;
             color: var(--color-text);
             text-decoration: none;
-            letter-spacing: 2px;
+            letter-spacing: 0.25em;
         }
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 3rem;
         }
         nav a {
             text-decoration: none;
             color: var(--color-text);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             position: relative;
             transition: var(--transition);
+            font-weight: 400;
         }
         nav a::after {
             content: '';
@@ -167,7 +201,7 @@
         nav a:hover::after { width: 100%; }
 
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
-        .hamburger span { width: 25px; height: 2px; background-color: var(--color-text); transition: var(--transition); }
+        .hamburger span { width: 25px; height: 1px; background-color: var(--color-text); transition: var(--transition); }
 
         /* --- Hero Section --- */
         .hero {
@@ -177,28 +211,45 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            background: linear-gradient(rgba(254, 250, 224, 0.4), rgba(254, 250, 224, 0.6)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background-color: var(--color-bg); /* Completely white */
+        }
+        /* Subtle elegant background image with heavy white overlay to keep it "completely white" feel */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            opacity: 0.08; /* Very faint, keeping background predominantly white */
+            z-index: 0;
         }
         .hero-content {
+            position: relative;
+            z-index: 1;
             max-width: 800px;
             padding: 2rem;
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.5s;
+            animation: fadeInUp 1.2s ease forwards 0.3s;
         }
-        .hero h1 { margin-bottom: 1.5rem; color: var(--color-text); }
-        .hero p { font-size: 1.15rem; margin-bottom: 2.5rem; color: var(--color-text); max-width: 600px; margin-left: auto; margin-right: auto; }
 
         /* --- Sections General --- */
-        section { padding: 6rem 0; }
-        .section-bg { background-color: var(--color-peach); }
-        .section-alt { background-color: var(--color-pale); }
+        section { 
+            padding: 8rem 0; 
+            background-color: var(--color-bg); /* Completely white */
+        }
+        
+        .divider {
+            width: 60px;
+            height: 1px;
+            background-color: var(--color-tan);
+            margin: 0 auto 3rem;
+        }
 
         /* --- Portfolio --- */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
         }
         .portfolio-item {
@@ -206,140 +257,177 @@
             overflow: hidden;
             aspect-ratio: 3/4;
             cursor: pointer;
+            background-color: #f9f9f9;
         }
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 1s ease, filter 0.5s ease;
+            filter: grayscale(20%);
         }
-        .portfolio-item:hover img { transform: scale(1.05); }
+        .portfolio-item:hover img { 
+            transform: scale(1.03); 
+            filter: grayscale(0%);
+        }
         .portfolio-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(92, 75, 55, 0.4);
+            background: rgba(255, 255, 255, 0.9);
             opacity: 0;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid var(--color-text);
+            margin: 1rem;
+            width: calc(100% - 2rem);
+            height: calc(100% - 2rem);
         }
         .portfolio-item:hover .portfolio-overlay { opacity: 1; }
         .portfolio-overlay span {
-            color: var(--color-cream);
+            color: var(--color-text);
             font-family: var(--font-heading);
-            font-size: 1.5rem;
-            letter-spacing: 2px;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
         }
 
         /* --- About --- */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: center;
         }
         .about-img {
             width: 100%;
-            height: 500px;
+            height: 600px;
             object-fit: cover;
+            filter: grayscale(10%);
+        }
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--color-text-secondary);
+            margin-bottom: 1.5rem;
         }
 
         /* --- Services --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
             margin-top: 3rem;
         }
         .service-card {
-            background: var(--color-cream);
+            background: var(--color-bg);
             padding: 3rem 2rem;
             text-align: center;
-            border: 1px solid var(--color-pale);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             transition: var(--transition);
         }
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(92, 75, 55, 0.08);
             border-color: var(--color-tan);
+            transform: translateY(-5px);
         }
-        .service-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-tan); }
-        .service-card .price { font-size: 1.2rem; font-weight: 500; margin: 1.5rem 0; color: var(--color-text); }
+        .service-card .price { 
+            font-size: 1.1rem; 
+            font-weight: 400; 
+            margin: 1.5rem 0 2rem; 
+            color: var(--color-text);
+            letter-spacing: 0.1em;
+        }
 
         /* --- Minimalist Booking / Sign-up --- */
         .booking-section {
-            background-color: var(--color-sage);
             text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         .booking-form {
-            max-width: 550px;
+            max-width: 500px;
             margin: 3rem auto 0;
             display: grid;
-            gap: 1.5rem;
+            gap: 2rem;
         }
         .form-group { text-align: left; }
         .form-group label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.8rem;
             color: var(--color-text);
-            font-weight: 500;
+            font-weight: 400;
         }
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(92, 75, 55, 0.2);
-            background: rgba(254, 250, 224, 0.6);
+            padding: 1rem 0;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            background: transparent;
             font-family: var(--font-body);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-weight: 300;
             color: var(--color-text);
             transition: var(--transition);
             outline: none;
+            border-radius: 0;
         }
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: var(--color-tan);
-            background: var(--color-cream);
+            border-bottom-color: var(--color-tan);
         }
-        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        
+        /* Remove default arrow from select for minimalist look */
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0rem center;
+            background-size: 0.6rem;
+        }
 
         /* --- Footer --- */
         footer {
-            background-color: var(--color-text);
-            color: var(--color-cream);
-            padding: 4rem 0 2rem;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            padding: 5rem 0 3rem;
             text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         .footer-logo {
             font-family: var(--font-heading);
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
             display: inline-block;
-            letter-spacing: 2px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
         }
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 3rem;
+            margin: 2.5rem 0;
         }
         .social-links a {
-            color: var(--color-cream);
+            color: var(--color-text);
             text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             transition: var(--transition);
+            font-weight: 400;
         }
         .social-links a:hover { color: var(--color-tan); }
         .copyright {
-            font-size: 0.8rem;
-            color: rgba(254, 250, 224, 0.5);
-            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: var(--color-text-secondary);
+            margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(254, 250, 224, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            letter-spacing: 0.1em;
         }
 
         /* --- Animations --- */
@@ -348,8 +436,8 @@
         }
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
         }
         .fade-in.visible {
             opacity: 1;
@@ -363,20 +451,20 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 75%;
+                width: 100%;
                 height: 100vh;
-                background: var(--color-cream);
+                background: var(--color-bg);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 2.5rem;
+                gap: 3rem;
                 transition: var(--transition);
-                box-shadow: -5px 0 20px rgba(0,0,0,0.05);
             }
             nav ul.active { right: 0; }
-            .about-content { grid-template-columns: 1fr; gap: 2rem; }
-            .about-img { height: 350px; }
+            .about-content { grid-template-columns: 1fr; gap: 3rem; }
+            .about-img { height: 400px; }
             .lang-switch { top: 1.5rem; right: 4rem; }
+            h1 { letter-spacing: 0.1em; }
         }
     </style>
 </head>
@@ -404,7 +492,7 @@
                         <span lang="en">Portfolio</span><span lang="hy">Պորտֆոլիո</span>
                     </a></li>
                     <li><a href="#about" onclick="toggleMenu()">
-                        <span lang="en">About</span><span lang="hy">Մեր մասին</span>
+                        <span lang="en">About</span><span lang="hy">Մեր Մասին</span>
                     </a></li>
                     <li><a href="#services" onclick="toggleMenu()">
                         <span lang="en">Services</span><span lang="hy">Ծառայություններ</span>
@@ -424,24 +512,25 @@
                 <span lang="en">Solens Photo Studio</span>
                 <span lang="hy">Solens Ֆոտոստուդիա</span>
             </h1>
-            <p>
-                <span lang="en">Capturing your moments with elegance, natural light, and timeless beauty.</span>
-                <span lang="hy">Ձեր պահերը գեղեցկությամբ, բնական լույսով և հավերժական գրավչությամբ հավերժացնելը։</span>
+            <p class="tagline">
+                <span lang="en">Where art meets the Lens...</span>
+                <span lang="hy">Որտեղ արվեստը հանդիպում է ոսպնյակին...</span>
             </p>
             <a href="#booking" class="btn">
                 <span lang="en">Book a Session</span>
-                <span lang="hy">Ամրագրել նիստ</span>
+                <span lang="hy">Ամրագրել Նիստ</span>
             </a>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="section-bg">
+    <section id="portfolio">
         <div class="container">
             <h2 class="fade-in">
-                <span lang="en">Our Work</span>
-                <span lang="hy">Մեր աշխատանքները</span>
+                <span lang="en">Selected Works</span>
+                <span lang="hy">Ընտրյալ Աշխատանքներ</span>
             </h2>
+            <div class="divider fade-in"></div>
             <div class="portfolio-grid">
                 <div class="portfolio-item fade-in">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Portrait Photography">
@@ -455,10 +544,6 @@
                     <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Photography">
                     <div class="portfolio-overlay"><span>Fashion</span></div>
                 </div>
-                <div class="portfolio-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lifestyle Photography">
-                    <div class="portfolio-overlay"><span>Lifestyle</span></div>
-                </div>
             </div>
         </div>
     </section>
@@ -470,14 +555,19 @@
                 <div class="fade-in">
                     <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solens Studio Interior" class="about-img">
                 </div>
-                <div class="fade-in">
+                <div class="about-text fade-in">
                     <h2>
-                        <span lang="en">About Us</span>
-                        <span lang="hy">Մեր մասին</span>
+                        <span lang="en">The Studio</span>
+                        <span lang="hy">Ստուդիան</span>
                     </h2>
+                    <div class="divider" style="margin: 0 0 2rem 0;"></div>
                     <p>
-                        <span lang="en">At Solens Photo Studio, we believe that every photograph tells a story. Founded on the principles of minimalism and natural light, we create visual narratives that are both authentic and aesthetically refined. Our studio is a sanctuary where creativity meets professionalism, ensuring your unique moments are preserved with the utmost care and artistic vision.</span>
-                        <span lang="hy">Solens Ֆոտոստուդիայում մենք հավատում ենք, որ յուրաքանչյուր լուսանկար պատմություն է պատմում: Հիմնված մինիմալիզմի և բնական լույսի սկզբունքների վրա՝ մենք ստեղծում ենք տեսողական պատմություններ, որոնք միաժամանակ և՛ ավթենտիկ են, և՛ գեղագիտորեն կատարյալ: Մեր ստուդիան մի վայր է, որտեղ ստեղծագործականությունը հանդիպում է պրոֆեսիոնալիզմին՝ ապահովելով, որ Ձեր յուրահատուկ պահերը պահպանվեն առավելագույն հոգատարությամբ և գեղարվեստական տեսլականով:</span>
+                        <span lang="en">At Solens Photo Studio, we believe that every photograph tells a story. Founded on the principles of minimalism and natural light, we create visual narratives that are both authentic and aesthetically refined. Our studio is a sanctuary where creativity meets professionalism.</span>
+                        <span lang="hy">Solens Ֆոտոստուդիայում մենք հավատում ենք, որ յուրաքանչյուր լուսանկար պատմություն է պատմում: Հիմնված մինիմալիզմի և բնական լույսի սկզբունքների վրա՝ մենք ստեղծում ենք տեսողական պատմություններ, որոնք միաժամանակ և՛ ավթենտիկ են, և՛ գեղագիտորեն կատարյալ:</span>
+                    </p>
+                    <p>
+                        <span lang="en">We ensure your unique moments are preserved with the utmost care and artistic vision, delivering timeless elegance in every frame.</span>
+                        <span lang="hy">Մենք ապահովում ենք, որ Ձեր յուրահատուկ պահերը պահպանվեն առավելագույն հոգատարությամբ և գեղարվեստական տեսլականով՝ հավերժական գեղեցկություն պարգևելով յուրաքանչյուր կադրի:</span>
                     </p>
                 </div>
             </div>
@@ -485,17 +575,18 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section-alt">
+    <section id="services">
         <div class="container">
             <h2 class="fade-in">
                 <span lang="en">Services</span>
                 <span lang="hy">Ծառայություններ</span>
             </h2>
+            <div class="divider fade-in"></div>
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <h3>
                         <span lang="en">Portrait Session</span>
-                        <span lang="hy">Դիմանկարային նիստ</span>
+                        <span lang="hy">Դիմանկարային Նիստ</span>
                     </h3>
                     <p>
                         <span lang="en">1 hour studio session, 15 edited high-res images, private online gallery.</span>
@@ -510,7 +601,7 @@
                 <div class="service-card fade-in">
                     <h3>
                         <span lang="en">Wedding Story</span>
-                        <span lang="hy">Հարսանեկան պատմություն</span>
+                        <span lang="hy">Հարսանեկան Պատմություն</span>
                     </h3>
                     <p>
                         <span lang="en">Full day coverage, 2 photographers, 200+ edited images, premium photo album.</span>
@@ -546,9 +637,10 @@
         <div class="container">
             <h2 class="fade-in">
                 <span lang="en">Book Your Session</span>
-                <span lang="hy">Ամրագրեք Ձեր նիստը</span>
+                <span lang="hy">Ամրագրեք Ձեր Նիստը</span>
             </h2>
-            <p class="fade-in" style="margin-bottom: 2rem; color: var(--color-text);">
+            <div class="divider fade-in"></div>
+            <p class="fade-in" style="margin-bottom: 2rem; color: var(--color-text-secondary); font-size: 0.9rem; letter-spacing: 0.05em;">
                 <span lang="en">Fill out the minimalist form below and we will get back to you within 24 hours.</span>
                 <span lang="hy">Լրացրեք ստորև բերված պարզ ձևը, և մենք կկապվենք Ձեզ հետ 24 ժամվա ընթացքում:</span>
             </p>
@@ -563,7 +655,7 @@
                 <div class="form-group">
                     <label>
                         <span lang="en">Email Address</span>
-                        <span lang="hy">Էլեկտրոնային հասցե</span>
+                        <span lang="hy">Էլեկտրոնային Հասցե</span>
                     </label>
                     <input type="email" required>
                 </div>
@@ -577,20 +669,20 @@
                 <div class="form-group">
                     <label>
                         <span lang="en">Preferred Date</span>
-                        <span lang="hy">Ցանկալի ամսաթիվ</span>
+                        <span lang="hy">Ցանկալի Ամսաթիվ</span>
                     </label>
                     <input type="date" required>
                 </div>
                 <div class="form-group">
                     <label>
                         <span lang="en">Message / Service Type</span>
-                        <span lang="hy">Հաղորդագրություն / Ծառայության տեսակ</span>
+                        <span lang="hy">Հաղորդագրություն / Ծառայության Տեսակ</span>
                     </label>
                     <textarea required></textarea>
                 </div>
-                <button type="submit" class="btn" style="border: none; width: 100%; margin-top: 1rem;">
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1rem; border: none;">
                     <span lang="en">Send Request</span>
-                    <span lang="hy">Ուղարկել հայտ</span>
+                    <span lang="hy">Ուղարկել Հայտ</span>
                 </button>
             </form>
         </div>
@@ -599,10 +691,10 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-logo">SOLENS</div>
-            <p>
-                <span lang="en">Elegance in every frame.</span>
-                <span lang="hy">Գեղեցկություն յուրաքանչյուր կադրում:</span>
+            <div class="footer-logo">Solens</div>
+            <p style="font-size: 0.8rem; letter-spacing: 0.1em; color: var(--color-text-secondary);">
+                <span lang="en">Where art meets the Lens...</span>
+                <span lang="hy">Որտեղ արվեստը հանդիպում է ոսպնյակին...</span>
             </p>
             <div class="social-links">
                 <a href="#" aria-label="Instagram">Instagram</a>
@@ -610,9 +702,9 @@
                 <a href="#" aria-label="WhatsApp">WhatsApp</a>
             </div>
             <div class="copyright">
-                &copy; 2026 Solens Photo Studio. 
-                <span lang="en">All rights reserved.</span>
-                <span lang="hy">Բոլոր իրավունքները պաշտպանված են:</span>
+                &copy; 2026 SOLENS PHOTO STUDIO. 
+                <span lang="en">ALL RIGHTS RESERVED.</span>
+                <span lang="hy">ԲՈԼՈՐ ԻՐԱՎՈՒՆՔՆԵՐԸ ՊԱՇՏՊԱՆՎԱԾ ԵՆ:</span>
             </div>
         </div>
     </footer>
